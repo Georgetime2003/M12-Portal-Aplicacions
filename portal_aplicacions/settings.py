@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # Noves apps
     'login',
+    'aplicacions',
 
     # Allauth login de google
     'django.contrib.sites',
@@ -141,12 +142,8 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
-ACCOUNT_EMAIL_REQUIRED = True
-
-
 SOCIALACCOUNT_ADAPTER = "login.adapters.CustomSocialAccountAdapter"
+ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_ADAPTER = 'login.adapters.MyAccountAdapter'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
-
-
 ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = "None"

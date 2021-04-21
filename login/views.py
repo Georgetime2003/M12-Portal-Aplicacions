@@ -22,7 +22,7 @@ def usuari_grup(request, pk):
             idCurs = form.cleaned_data['Curs']
             grup = Group.objects.get(id=idCurs)
             grup.user_set.add(usuari)
-        return redirect("/")
+        return redirect("aplicacions/")
     else:
         form = UsuariAfegirGrup()
         return render(request, 'accounts/grup.html', {'form': UsuariAfegirGrup})
