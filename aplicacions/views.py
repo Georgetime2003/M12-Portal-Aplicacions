@@ -6,5 +6,5 @@ from django.views import generic
 
 class AplicacioLlistatView(LoginRequiredMixin, generic.ListView):
     template_name = "aplicacions/llistar_aplicacions.html"
-    context_object_name = "aplicacio"
+    context_object_name = "llista_aplicacions"
     queryset = Aplicacio.objects.all()
