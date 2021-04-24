@@ -29,11 +29,39 @@
       </a>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
         <li>
-          <a class="dropdown-item" href="{%url 'login:logout' %}">
+          <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Tancar Secció
-          </a>
+          </button>
         </li>
-      </ul>
+      </ul> 
+    </div>    
+    <!-- Modal Logout -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="text-dark modal-title" id="exampleModalLabel">Tancar Sessió</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="text-dark modal-body">
+            {{user.get_full_name}},<br>
+            Estas segur de tancar sessió? 
+          </div>
+          <div class="modal-footer">
+            <form method="post" action="{% url 'account_logout' %}">
+              {% csrf_token %} {% if redirect_field_value %}
+              <input
+                type="hidden"
+                name="{{ redirect_field_name }}"
+                value="{{ redirect_field_value }}"
+              />
+              {% endif %}
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel·lar</button>
+            <button type="submit" class="btn btn-secondary">Tancar sessió</button>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </nav>

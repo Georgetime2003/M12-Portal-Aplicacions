@@ -9,8 +9,10 @@ class CustomSocialAccountAdapter(DefaultSocialAccountAdapter):
 
     def pre_social_login(self, request, sociallogin):
         email = sociallogin.user.email.lower().split("@")
+        error = "La compte de correu ha de ser domini sapalomera '@sapalomera.cat' "
         if email[1] != "sapalomera.cat":
-            raise ImmediateHttpResponse(render(request, "accounts/login.html"))
+            raise ImmediateHttpResponse(
+                render(request, "accounts/login.html", {'error': error}))
 
 
 class MyAccountAdapter(DefaultAccountAdapter):
