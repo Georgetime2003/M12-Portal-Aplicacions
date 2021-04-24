@@ -2,3 +2,16 @@
   font-size: 30px;
   font-family: "Segoe UI", sans-serif;
 }
+.gradient{
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#373737), color-stop(#575757), color-stop(#797979), color-stop(#9d9d9d), to(#c2c2c2));
+  background-image: -o-linear-gradient(left top, #373737, #575757, #797979, #9d9d9d, #c2c2c2);
+  background-image: linear-gradient(to right bottom, #373737, #575757, #797979, #9d9d9d, #c2c2c2);
+}
+.vertical-center {
+  display: flex;
+  align-items: center;
+  min-height: 70vh;
+}
+.size-form{
+  min-height: 60vh;
+}
