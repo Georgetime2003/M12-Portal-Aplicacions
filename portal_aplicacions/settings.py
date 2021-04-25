@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # Noves apps
     'login',
     'aplicacions',
+    'batx_seminaris',
 
     # boostrap forms
     'crispy_forms',
