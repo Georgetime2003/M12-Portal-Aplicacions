@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'login',
     'aplicacions',
 
+    # boostrap forms
+    'crispy_forms',
     # Allauth login de google
     'django.contrib.sites',
     'allauth',

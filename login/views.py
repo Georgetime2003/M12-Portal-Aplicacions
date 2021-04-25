@@ -2,16 +2,12 @@ from django.shortcuts import render
 from django.views import View
 from django.shortcuts import redirect
 from django.contrib.auth.models import User, Group
-from allauth.account.views import LoginView, LogoutView
+from allauth.account.views import LoginView
 from .forms import UsuariAfegirGrup
 
 
 class GoogleLoginView(LoginView):
     template_name = 'accounts/login.html'
-
-
-class GoogleLogoutView(LogoutView):
-    template_name = 'accounts/logout.html'
 
 
 def usuari_grup(request, pk):
