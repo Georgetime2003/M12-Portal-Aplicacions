@@ -8,8 +8,6 @@
     }
 </style>
 {% block content %}
-{% for departamentSeminari in llista_manteniment %}
-{% endfor %}
 <div class="container">
     <div class="row">
         <h2 class="page-header pt-5"><div class="crush">Departaments i seminaris</div></h2>
@@ -27,29 +25,33 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- departaments -->
-                        <tr class="align-middle">
-                            <td class="text-nowrap">
-                                <button class="btn shadow-none"> <i class="bi bi-plus-square"></i></button>
-                                <button class="btn shadow-none mt-n1"> <i class="bi bi-pencil-square"></i></button>
-                            </td>                     
-                            <td colspan="2"><h5></h5></td>                 
-                            <td style="text-align:right">
-                                <button class="btn shadow-none"> <i class="bi bi-x-square"></i></button>
-                            </td>
-                        </tr>
-                        <!-- Seminaris -->
-                        <tr class="align-middle borderless">
-                            <td style="text-align:right">
-                                <i class="bi bi-circle-fill" style="font-size:12px;"></i>
-                                <button class="btn shadow-none"> <i class="bi bi-pencil-square"></i></button>
-                                <button class="btn shadow-none"> <i class="bi bi-x-square"></i></button>
-                            </td>
-                            <td colspan="2">Seminari Ciencia </td>
-                            <td class="text-nowrap" style="text-align:right">
-                                Places Disponibles:10   
-                            </td>
-                        </tr>
+                        {% for departament in llista_manteniment %}
+                            <!-- departaments -->
+                            <tr class="align-middle">
+                                <td class="text-nowrap">
+                                    <button class="btn shadow-none"> <i class="bi bi-plus-square"></i></button>
+                                    <button class="btn shadow-none mt-n1"> <i class="bi bi-pencil-square"></i></button>
+                                </td>                     
+                                <td colspan="2"><h5>{{departament.nom}}</h5></td>                 
+                                <td style="text-align:right">
+                                    <button class="btn shadow-none"> <i class="bi bi-x-square"></i></button>
+                                </td>
+                            </tr>
+                            {% for seminari in departament.seminari_set.all %}
+                                <!-- Seminaris -->
+                                <tr class="align-middle borderless">
+                                    <td style="text-align:right">
+                                        <i class="bi bi-circle-fill" style="font-size:12px;"></i>
+                                        <button class="btn shadow-none"> <i class="bi bi-pencil-square"></i></button>
+                                        <button class="btn shadow-none"> <i class="bi bi-x-square"></i></button>
+                                    </td>
+                                    <td colspan="2"> {{seminari.nom}}</td>
+                                    <td class="text-nowrap" style="text-align:right">
+                                        Places Disponibles: {{seminari.places}}  
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>
