@@ -1,7 +1,7 @@
 {% extends "base.html" %} {% block content %}
 <div class="container-fluid">
   <div class="row">
-    <div class="col-2 overflow-auto">
+    <div class="col-3 overflow-auto">
       {% if llista_aplicacions %} {% for aplicacio in llista_aplicacions %}
       <div class="card mt-1">
         <div class="card-body">
@@ -24,7 +24,7 @@
       <p>No hi han aplicacions</p>
       {% endif %}
     </div>
-    <div class="col-10 mx-auto vh-100 bg-light">APP</div>
+    <div class="col-9 mx-auto vh-100 bg-light">APP</div>
   </div>
 </div>
 {% endblock content %}
