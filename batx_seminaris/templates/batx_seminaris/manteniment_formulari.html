@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 <style>
     .borderless td, .borderless th {
     border: none;}
@@ -8,6 +9,7 @@
     }
 </style>
 {% block content %}
+<div class="modal" tabindex="-1" id="creacio" role="dialog"></div>
 <div class="container">
     <div class="row">
         <h2 class="page-header pt-5"><div class="crush">Departaments i seminaris</div></h2>
@@ -18,8 +20,8 @@
                 <table class="table table-sm table-hover">
                     <thead>            
                         <tr>
-                            <th class="align-text-bottom" colspan="4">
-                                <button class=" text-center btn shadow-none"> <i class="bi bi-plus-square align-middle" style="font-size:15px;"></i></button>
+                            <th colspan="4">
+                                <button onclick="obrir_modal_crear_departament('{% url 'batxSeminaris:afegir-departament' %}')" class="btn shadow-none"> <i  class="bi bi-plus-square" style="font-size:15px;"></i></button>
                                 Nou Departament
                             </th>
                         </tr>
@@ -29,10 +31,10 @@
                             <!-- departaments -->
                             <tr class="align-middle">
                                 <td class="text-nowrap">
-                                    <button class="btn shadow-none"> <i class="bi bi-plus-square"></i></button>
-                                    <button class="btn shadow-none mt-n1"> <i class="bi bi-pencil-square"></i></button>
+                                    <button class="btn shadow-none px-0"> <i class="bi bi-plus-square"></i></button>
+                                    <button class="btn shadow-none px-2"> <i class="bi bi-pencil-square"></i></button>
                                 </td>                     
-                                <td colspan="2"><h5>{{departament.nom}}</h5></td>                 
+                                <td colspan="2" style="text-align:left"><h5>{{departament.nom}}</h5></td>                 
                                 <td style="text-align:right">
                                     <button class="btn shadow-none"> <i class="bi bi-x-square"></i></button>
                                 </td>
@@ -41,9 +43,9 @@
                                 <!-- Seminaris -->
                                 <tr class="align-middle borderless">
                                     <td style="text-align:right">
-                                        <i class="bi bi-circle-fill" style="font-size:12px;"></i>
-                                        <button class="btn shadow-none"> <i class="bi bi-pencil-square"></i></button>
-                                        <button class="btn shadow-none"> <i class="bi bi-x-square"></i></button>
+                                        <i class="bi bi-circle-fill px-4" style="font-size:12px;"></i>
+                                        <button class="btn shadow-none px-0"> <i class="bi bi-pencil-square"></i></button>
+                                        <button class="btn shadow-none px-0"> <i class="bi bi-x-square"></i></button>
                                     </td>
                                     <td colspan="2"> {{seminari.nom}}</td>
                                     <td class="text-nowrap" style="text-align:right">
@@ -56,6 +58,9 @@
                 </table>
             </div>
         </div>      
-    </div>                  
-</div>         
+    </div>        
+</div>
+{% block extrajs %}
+<script type="text/javascript" src="{% static 'js/batxSeminaris/mantenimentFormulari.js' %}"></script>
+{% endblock extrajs %}
 {% endblock %}

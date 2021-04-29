@@ -16,6 +16,8 @@ class Seminari(models.Model):
     departament = models.ForeignKey(Departament, on_delete=models.CASCADE)
     places = models.PositiveSmallIntegerField()
 
+    def __str__(self):
+        return self.nom
 
 class Solicitud(models.Model):
     plantajament = models.TextField()
