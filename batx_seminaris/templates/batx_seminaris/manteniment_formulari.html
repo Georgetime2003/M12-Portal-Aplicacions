@@ -9,7 +9,6 @@
     }
 </style>
 {% block content %}
-<div class="modal" tabindex="-1" id="creacio" role="dialog"></div>
 <div class="container">
     <div class="row">
         <h2 class="page-header pt-5"><div class="crush">Departaments i seminaris</div></h2>
@@ -18,10 +17,10 @@
         <div class="col-md-8">
             <div class="table-responsive">
                 <table class="table table-sm table-hover">
-                    <thead>            
+                    <thead class="align-middle">            
                         <tr>
                             <th colspan="4">
-                                <button onclick="obrir_modal_crear_departament('{% url 'batxSeminaris:afegir-departament' %}')" class="btn shadow-none"> <i  class="bi bi-plus-square" style="font-size:15px;"></i></button>
+                                <button onclick="obrir_modal_crear_departament('{% url 'batxSeminaris:afegir-departament' %}')" class="btn shadow-none p-0 pb-2 pe-2"> <i  class="bi bi-plus-square align-middle" style="font-size:15px;"></i></button>
                                 Nou Departament
                             </th>
                         </tr>
@@ -32,11 +31,11 @@
                             <tr class="align-middle">
                                 <td class="text-nowrap">
                                     <button class="btn shadow-none px-0"> <i class="bi bi-plus-square"></i></button>
-                                    <button class="btn shadow-none px-2"> <i class="bi bi-pencil-square"></i></button>
+                                    <button onclick="obrir_modal_modificar_departament('{% url 'batxSeminaris:modificar-departament' departament.id %}')" class="btn shadow-none px-2"> <i class="bi bi-pencil-square"></i></button>
                                 </td>                     
                                 <td colspan="2" style="text-align:left"><h5>{{departament.nom}}</h5></td>                 
                                 <td style="text-align:right">
-                                    <button class="btn shadow-none"> <i class="bi bi-x-square"></i></button>
+                                    <button onclick="obrir_modal_eliminar_departament('{% url 'batxSeminaris:eliminar-departament' departament.id %}')" class="btn shadow-none"> <i class="bi bi-x-square"></i></button>
                                 </td>
                             </tr>
                             {% for seminari in departament.seminari_set.all %}
@@ -60,6 +59,10 @@
         </div>      
     </div>        
 </div>
+<div class="modal fade" tabindex="-1" id="modalAfegirDepartament" role="dialog"></div>
+<div class="modal fade" tabindex="-1" id="modalModificarDepartament" role="dialog"></div>
+<div class="modal fade" tabindex="-1" id="modalEliminarDepartament" role="dialog"></div>
+
 {% block extrajs %}
 <script type="text/javascript" src="{% static 'js/batxSeminaris/mantenimentFormulari.js' %}"></script>
 {% endblock extrajs %}
