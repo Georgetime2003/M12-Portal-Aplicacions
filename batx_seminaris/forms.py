@@ -1,15 +1,26 @@
 from django import forms
 
-from .models import Departament
+from .models import Departament, Seminari
+
 
 class DepartamentForm(forms.ModelForm):
 
     class Meta:
         model = Departament
         fields = ['nom']
-        widget=forms.Select(attrs={"class": "form-select"})
-    
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['nom'].widget.attrs.update({'class': 'form-control'})
-        
+
+
+class SeminariForm(forms.ModelForm):
+
+    class Meta:
+        model = Seminari
+        fields = ['nom', 'places']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['nom'].widget.attrs.update({'class': 'form-control'})
+        self.fields['places'].widget.attrs.update({'class': 'form-control'})

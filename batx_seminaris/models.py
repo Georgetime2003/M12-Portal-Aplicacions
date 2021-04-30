@@ -19,12 +19,9 @@ class Seminari(models.Model):
     def __str__(self):
         return self.nom
 
+
 class Solicitud(models.Model):
     plantajament = models.TextField()
     seminari = models.ForeignKey(Seminari, on_delete=models.CASCADE)
     usuari = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
-
-
-class SeminariAssignat(models.Model):
-    seminari = models.ForeignKey(Seminari, on_delete=models.CASCADE)
-    usuari = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    assignat = models.BooleanField(default=False)
