@@ -6,5 +6,5 @@ class DepartamentForm(forms.ModelForm):
 
     class Meta:
         model = Departament
-        fields = ('nom')
+        fields = ['nom']
     
