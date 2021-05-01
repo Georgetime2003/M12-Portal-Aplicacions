@@ -11,11 +11,18 @@
           Administració </br>Temes Projecte
           <hr/>
         </span>
-        <li href="#" class="nav-link botons">
-          <span>Assignar Formulari</span>
+        <li href="#" class="nav-link botons" role="button">
+          <span>Assignar <br> Projecte</span>
         </li>
-        <li href="#" class="nav-link botons">
-          <span>Manteniment <br> Formulari</span>
+        <li class="botoClicat nav-link">
+            <div class="row">
+                <div class="col-sm-2 pt-1">
+                    <i class="bi bi-patch-exclamation" style="font-size:20px;"></i>
+                </div>
+                <div class="col-sm-10">
+                    Manteniment <br> Formulari
+                </div>
+            </div>
         </li>
       </ul>
 </div>
@@ -31,18 +38,17 @@
                     <thead class="align-middle">            
                         <tr>
                             <th colspan="4">
-                                <button onclick="obrir_modal_crear_departament('{% url 'batxSeminaris:afegir-departament' %}')" class="btn shadow-none p-0 pb-2 pe-2"> <i  class="bi bi-plus-square align-middle" style="font-size:15px;"></i></button>
+                                <button onclick="obrir_modal_crear_departament('{% url 'batxSeminaris:crear-departament' %}')" class="btn shadow-none p-0 pb-2 pe-2"> <i  class="bi bi-plus-square align-middle" style="font-size:15px;"></i></button>
                                 Nou Departament
                             </th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for departament in llista_manteniment %}
-                        <div class="modal fade" tabindex="-1" id="modalAfegirSeminari" role="dialog"></div>
                             <!-- departaments -->
                             <tr class="align-middle">
                                 <td class="text-nowrap">
-                                    <button onclick="obrir_modal_crear_seminari('{% url 'batxSeminaris:afegir-seminari' departament.id %}')" class="btn shadow-none px-0"> <i class="bi bi-plus-square"></i></button>
+                                    <button onclick="obrir_modal_crear_seminari('{% url 'batxSeminaris:crear-seminari' %}');f1(this)" value="{{ departament.id}}" id="botoCrearSeminari" class="btn shadow-none px-0"> <i class="bi bi-plus-square"></i></button>
                                     <button onclick="obrir_modal_modificar_departament('{% url 'batxSeminaris:modificar-departament' departament.id %}')" class="btn shadow-none px-2"> <i class="bi bi-pencil-square"></i></button>
                                 </td>                     
                                 <td colspan="2" style="text-align:left"><h5>{{departament.nom}}</h5></td>                 
@@ -74,6 +80,7 @@
   <div class="modal fade" tabindex="-1" id="modalAfegirDepartament" role="dialog"></div>
   <div class="modal fade" tabindex="-1" id="modalModificarDepartament" role="dialog"></div>
   <div class="modal fade" tabindex="-1" id="modalEliminarDepartament" role="dialog"></div>
+  <div class="modal fade" tabindex="-1" id="modalAfegirSeminari" role="dialog"></div>
   <div class="modal fade" tabindex="-1" id="modalModificarSeminari" role="dialog"></div>
   <div class="modal fade" tabindex="-1" id="modalEliminarSeminari" role="dialog"></div>
 </div>

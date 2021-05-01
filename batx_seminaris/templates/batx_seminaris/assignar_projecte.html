@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<div
+      class="side-navbar active-nav d-flex justify-content-between flex-wrap flex-column"
+      id="sidebar"
+    >
+      <ul class="nav flex-column text-white w-100">
+        <span href="#" class="nav-link h5 text-white text-center my-2">
+          Administració </br>Temes Projecte
+          <hr/>
+        </span>
+        <li href="#" class="nav-link botons" role="button">
+          <span>Assignar <br> Projecte</span>
+        </li>
+        <li class="botoClicat nav-link">
+            <div class="align-middle">
+                <i class="bi bi-patch-exclamation"></i><span class="px-1" >Manteniment</span><br><span class="px-4" >Formulari</span>
+            </div>
+        </li>
+      </ul>
+</div>
+<div class="p-1 active-cont">
+</div>
+{% endblock %}

@@ -31,12 +31,15 @@ body {
 .botons:hover{
   background-color: #ffffff26;
 }
+.botoClicat{
+  background-color: #ffffff26;
+}
 .side-navbar {
   width: 210px;
   height: 100%;
   position: fixed;
   margin-left: -300px;
-  background-color: #595959;
+  background-color: #313030;
   transition: 0.5s;
 }
 .my-container {
@@ -49,7 +52,7 @@ body {
 
 /* for main section */
 .active-cont {
-  margin-left: 210px;
+  margin-left: 250px;
 }
 
 #menu-btn {

@@ -2,10 +2,10 @@
 <div class="modal-dialog">
     <div class="modal-content">
     <div class="modal-header">
-        <h5 class="modal-title">Afegir departament</h5>
+        <h5 class="modal-title">Crear departament</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
-    <form action="{% url 'batxSeminaris:afegir-departament' %}" method="POST">
+    <form action="{% url 'batxSeminaris:crear-departament' %}" method="POST">
         {% csrf_token %} 
         <div class="modal-body">
             {{form.nom|as_crispy_field}}        
