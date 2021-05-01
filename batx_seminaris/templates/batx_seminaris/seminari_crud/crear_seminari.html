@@ -8,7 +8,9 @@
     <form action="{% url 'batxSeminaris:crear-seminari'%}" method="POST">
         {% csrf_token %} 
         <div class="modal-body">
-           {{form}}
+            {{form.nom|as_crispy_field}}
+            {{form.places|as_crispy_field}}    
+            {{form.departament|as_crispy_field}}  
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
