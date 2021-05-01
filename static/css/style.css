@@ -1,0 +1,64 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  min-height: 100vh;
+  background-color: #fff;
+}
+.titol {
+  font-size: 30px;
+  font-family: "Segoe UI", sans-serif;
+}
+.gradient{
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#373737), color-stop(#575757), color-stop(#797979), color-stop(#9d9d9d), to(#c2c2c2));
+  background-image: -o-linear-gradient(left top, #373737, #575757, #797979, #9d9d9d, #c2c2c2);
+  background-image: linear-gradient(to right bottom, #373737, #575757, #797979, #9d9d9d, #c2c2c2);
+}
+.vertical-center {
+  display: flex;
+  align-items: center;
+  min-height: 70vh;
+}
+.size-form{
+  min-height: 60vh;
+}
+/*Sidebar batx seminaris */
+
+.botons:active,
+.botons:focus,
+.botons:hover{
+  background-color: #ffffff26;
+}
+.side-navbar {
+  width: 210px;
+  height: 100%;
+  position: fixed;
+  margin-left: -300px;
+  background-color: #595959;
+  transition: 0.5s;
+}
+.my-container {
+  transition: 0.4s;
+}
+
+.active-nav {
+  margin-left: 0;
+}
+
+/* for main section */
+.active-cont {
+  margin-left: 210px;
+}
+
+#menu-btn {
+  background-color: #100901;
+  color: #fff;
+  margin-left: -62px;
+}
+
+.my-container input {
+  border-radius: 2rem;
+  padding: 2px 20px;
+}

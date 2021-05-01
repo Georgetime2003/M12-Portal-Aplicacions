@@ -1,16 +1,26 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 {% load static %}
-<style>
-    .borderless td, .borderless th {
-    border: none;}
-    .btn {
-    padding:0;
-    margin:1;
-    }
-</style>
 {% block content %}
-<div class="container">
+<div
+      class="side-navbar active-nav d-flex justify-content-between flex-wrap flex-column"
+      id="sidebar"
+    >
+      <ul class="nav flex-column text-white w-100">
+        <span href="#" class="nav-link h5 text-white text-center my-2">
+          Administració </br>Temes Projecte
+          <hr/>
+        </span>
+        <li href="#" class="nav-link botons">
+          <span>Assignar Formulari</span>
+        </li>
+        <li href="#" class="nav-link botons">
+          <span>Manteniment <br> Formulari</span>
+        </li>
+      </ul>
+</div>
+<div class="p-1 active-cont">
+  <div class="container">
     <div class="row">
         <h2 class="page-header pt-5"><div class="crush">Departaments i seminaris</div></h2>
     </div>
@@ -60,13 +70,14 @@
             </div>
         </div>      
     </div>        
+  </div>
+  <div class="modal fade" tabindex="-1" id="modalAfegirDepartament" role="dialog"></div>
+  <div class="modal fade" tabindex="-1" id="modalModificarDepartament" role="dialog"></div>
+  <div class="modal fade" tabindex="-1" id="modalEliminarDepartament" role="dialog"></div>
+  <div class="modal fade" tabindex="-1" id="modalModificarSeminari" role="dialog"></div>
+  <div class="modal fade" tabindex="-1" id="modalEliminarSeminari" role="dialog"></div>
 </div>
-<div class="modal fade" tabindex="-1" id="modalAfegirDepartament" role="dialog"></div>
-<div class="modal fade" tabindex="-1" id="modalModificarDepartament" role="dialog"></div>
-<div class="modal fade" tabindex="-1" id="modalEliminarDepartament" role="dialog"></div>
-<div class="modal fade" tabindex="-1" id="modalModificarSeminari" role="dialog"></div>
-<div class="modal fade" tabindex="-1" id="modalEliminarSeminari" role="dialog"></div>
 {% block extrajs %}
-<script type="text/javascript" src="{% static 'js/batxSeminaris/mantenimentFormulari.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/batxSeminaris/mantenimentFormulari.js' %}"></script>
 {% endblock extrajs %}
 {% endblock %}
