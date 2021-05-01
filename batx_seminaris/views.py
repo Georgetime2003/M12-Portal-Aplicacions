@@ -41,4 +41,10 @@ class ModificarSeminari(LoginRequiredMixin, generic.UpdateView):
     form_class = SeminariForm
     success_url = reverse_lazy("batxSeminaris:manteniment-formulari")
     queryset = Seminari.objects.all()
+
+class EliminarSeminari(LoginRequiredMixin, generic.DeleteView):
+    template_name = "batx_seminaris/seminari_crud/eliminar_seminari.html"
+    success_url = reverse_lazy("batxSeminaris:manteniment-formulari")
+    queryset = Seminari.objects.all()
+
     

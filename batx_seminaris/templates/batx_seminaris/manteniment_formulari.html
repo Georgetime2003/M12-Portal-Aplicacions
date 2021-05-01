@@ -46,7 +46,7 @@
                                     <td style="text-align:right">
                                         <i class="bi bi-circle-fill px-4" style="font-size:12px;"></i>
                                         <button onclick="obrir_modal_modificar_seminari('{% url 'batxSeminaris:modificar-seminari' seminari.id %}')" class="btn shadow-none px-0"> <i class="bi bi-pencil-square"></i></button>
-                                        <button class="btn shadow-none px-0"> <i class="bi bi-x-square"></i></button>
+                                        <button onclick="obrir_modal_eliminar_seminari('{% url 'batxSeminaris:eliminar-seminari' seminari.id %}')" class="btn shadow-none px-0"> <i class="bi bi-x-square"></i></button>
                                     </td>
                                     <td colspan="2"> {{seminari.nom}}</td>
                                     <td class="text-nowrap" style="text-align:right">

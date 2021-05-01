@@ -5,7 +5,8 @@ from .views import (
     ModificarDepartament,
     EliminarDepartament,
     AfegirSeminari,
-    ModificarSeminari,    
+    ModificarSeminari,  
+    EliminarSeminari,  
 )
 app_name = "batxSeminaris"
 urlpatterns = [
@@ -15,4 +16,5 @@ urlpatterns = [
     path('eliminar_departament/<int:pk>/', EliminarDepartament.as_view(), name='eliminar-departament'),
     path('afegir_seminari/<int:pk>/',AfegirSeminari.as_view() , name='afegir-seminari'),
     path('modificar_seminari/<int:pk>/',ModificarSeminari.as_view() , name='modificar-seminari'),
+    path('eliminar_seminari/<int:pk>/',EliminarSeminari.as_view() , name='eliminar-seminari'),
 ]
