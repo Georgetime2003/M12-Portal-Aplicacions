@@ -7,12 +7,12 @@
       id="sidebar"
     >
       <ul class="nav flex-column text-white w-100">
-        <span href="#" class="nav-link h5 text-white text-center my-2">
+        <span class="nav-link h5 text-white text-center my-2">
           Administració </br>Temes Projecte
           <hr/>
         </span>
-        <li href="#" class="nav-link botons" role="button">
-          <span>Assignar <br> Projecte</span>
+        <li onclick = "location.href= '{% url 'batxSeminaris:assignar-projecte' %}'" class="linkAssignarProjecte nav-link botons " role="button">
+            <span>Assignar <br> Projecte</span>
         </li>
         <li class="botoClicat nav-link">
             <div class="row">
@@ -28,9 +28,7 @@
 </div>
 <div class="p-1 active-cont">
   <div class="container">
-    <div class="row">
-        <h2 class="page-header pt-5"><div class="crush">Departaments i seminaris</div></h2>
-    </div>
+    <h2 class="pt-5 pb-4">Departaments i seminaris</h2>
     <div class="row">
         <div class="col-md-8">
             <div class="table-responsive">
