@@ -53,7 +53,7 @@ body {
 
 /* for main section */
 .active-cont {
-  margin-left: 420px;
+  margin-left: 270px;
 }
 
 #menu-btn {
@@ -65,4 +65,12 @@ body {
 .my-container input {
   border-radius: 2rem;
   padding: 2px 20px;
+}
+
+/*Treure border de de tr */
+tr.noBorder td {
+  border: 0;
+}
+.active {
+  background-color: #000 !important;
 }

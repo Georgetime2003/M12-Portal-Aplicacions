@@ -59,25 +59,50 @@
     </div>
     <div class="py-5">
       <div class="row py-2">
-        <div class="col-md-9">
+        <div class="col-md-10">
             <div class="table-responsive">
                 <table class="table table-sm table-hover">
                   <thead>            
                     <tr>
                         <th>Alumne</th>
-                        <th>Primera Opció</th>
-                        <th>Segona Opció</th>
-                        <th>Tercera Opció</th>
-                        <th>Plantajament</th>
+                        <th class="text-center">Primera Opció</th>
+                        <th class="text-center">Segona Opció</th>
+                        <th class="text-center">Tercera Opció</th>
+                        <th class="text-center">Plantajament</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="taulaSolicituds">
                   {% for key, value in solicituds %}
                     <tr>
                       <td>{{value.0.usuari}}</td>
                     {% for solicitud in value %}
-                        <td>{{solicitud.seminari}}</td> 
+                        <td><button type="button" class="btn btn-outline-dark w-100">{{solicitud.seminari}}</button></td> 
                     {% endfor %}
+                        <td>
+                          <button type="button" class="btn btn-outline-dark w-100" data-bs-toggle="collapse" data-bs-target="#mostrar{{key}}" aria-controls="mostrar{{key}}">Mostrar</button>
+                        </td>
+                    </tr>
+                    <tr class="noBorder">
+                      <td colspan="5" class=" p-0">
+                        <div class="collapse" id="mostrar{{key}}">
+                          <div class="accordion" id="accordionExample">
+                            {% for solicitud in value %}
+                            <div class="accordion-item">
+                              <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordion{{key}}{{solicitud.seminari|cut:' '}}" aria-expanded="false" aria-controls="accordion{{key}}{{solicitud.seminari|cut:' '}}">
+                                  <h6>{{solicitud.seminari}}</h6>
+                                </button>
+                              </h2>
+                              <div id="accordion{{key}}{{solicitud.seminari|cut:' '}}" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                  {{solicitud.plantajament}}
+                                </div>
+                              </div>
+                            </div>
+                            {% endfor %}
+                          </div>
+                        </div>
+                      </td>
                     </tr>
                   {% endfor %}
                 </tbody>
@@ -87,5 +112,7 @@
       </div>
     </div>
 </div>
-
+{% block extrajs %}
+  <script type="text/javascript" src="{% static 'js/batxSeminaris/assignarProjecte.js' %}"></script>
+{% endblock extrajs %}
 {% endblock %}

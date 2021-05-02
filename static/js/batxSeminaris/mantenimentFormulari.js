@@ -17,9 +17,6 @@ function obrir_modal_eliminar_departament(url){
 }
 //Funcions per obrir els modals de Seminari
 var departament_id
-function f1(objButton){  
-    departament_id = objButton.value;
-}
 function obrir_modal_crear_seminari(url){
     $('#modalAfegirSeminari').load(url,function(){
         $(this).modal('show');
