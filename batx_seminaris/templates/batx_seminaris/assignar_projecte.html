@@ -34,7 +34,7 @@
         </div>
         <div class="col-sm-1"></div>
         <div class="col-sm-2 pe-3">
-          <button type="button" class="btn btn-outline-secondary btn-sm">Exportar LListat</button>
+            <button type="button" class="btn btn-outline-secondary btn-sm">Exportar LListat</button>
         </div>
     </div>
     <div class="row g-3 align-items-center">
@@ -71,6 +71,16 @@
                         <th>Plantajament</th>
                     </tr>
                 </thead>
+                <tbody>
+                  {% for key, value in solicituds %}
+                    <tr>
+                      <td>{{value.0.usuari}}</td>
+                    {% for solicitud in value %}
+                        <td>{{solicitud.seminari}}</td> 
+                    {% endfor %}
+                    </tr>
+                  {% endfor %}
+                </tbody>
                 </table>
             </div>
         </div>

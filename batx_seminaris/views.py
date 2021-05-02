@@ -4,6 +4,9 @@ from django.views import generic
 from django.urls import reverse_lazy
 from .models import Departament, Seminari, Solicitud
 from .forms import DepartamentForm, SeminariForm
+from django.db.models.query import QuerySet
+from collections import defaultdict
+
 
 
 class MantenimentFormulari(LoginRequiredMixin, generic.ListView):
@@ -11,12 +14,28 @@ class MantenimentFormulari(LoginRequiredMixin, generic.ListView):
     context_object_name = "llista_manteniment"
     queryset = Departament.objects.all()
 
+
+def Assignar_Projecte(request):
+    Solicituds = Solicitud.objects.all()
+    a={}
+    for solicitud in Solicituds:
+        a.setdefault(solicitud.usuari_id, []).append(solicitud)
+    
+    print(a)
+    return render(request,'batx_seminaris/assignar_projecte.html',{"solicituds": sorted(a.items())})
+    
+
 class AssignarProjecte(LoginRequiredMixin, generic.ListView):
     template_name = "batx_seminaris/assignar_projecte.html"
     context_object_name = "llista_solicituds"
-    queryset = Solicitud.objects.all()
-
-
+    ArraySolicituds=[]
+    query = Solicitud.objects.all()
+    a={}
+    for solicitud in query:
+        a.setdefault(solicitud.usuari_id, []).append(solicitud)
+    ArraySolicituds.append(a)
+    queryset = ArraySolicituds
+            
 class CrearDepartament(LoginRequiredMixin, generic.CreateView):
     template_name = "batx_seminaris/departament_crud/crear_departament.html"
     form_class = DepartamentForm

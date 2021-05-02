@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
+import debug_toolbar
 
 urlpatterns = [
 
@@ -9,4 +10,5 @@ urlpatterns = [
     path('batxilleratProjecte/', include('batx_seminaris.urls', namespace="batxSeminaris")),
     # Path obligatori allauth
     path('accounts/', include('allauth.urls')),
+    path('__debug__/', include(debug_toolbar.urls)),
 ]

@@ -2,6 +2,7 @@ from django.urls import path, include
 from .views import (
     MantenimentFormulari,
     AssignarProjecte,
+    Assignar_Projecte,
     CrearDepartament,
     ModificarDepartament,
     EliminarDepartament,
@@ -12,7 +13,7 @@ from .views import (
 app_name = "batxSeminaris"
 urlpatterns = [
     path('mantenimentFormulari/', MantenimentFormulari.as_view(), name='manteniment-formulari'),
-    path('assignarProjecte/', AssignarProjecte.as_view(), name='assignar-projecte'),
+    path('assignarProjecte/', Assignar_Projecte, name='assignar-projecte'),
     path('crear_departament/', CrearDepartament.as_view(), name='crear-departament'),
     path('modificar_departament/<int:pk>/', ModificarDepartament.as_view(), name='modificar-departament'),
     path('eliminar_departament/<int:pk>/', EliminarDepartament.as_view(), name='eliminar-departament'),

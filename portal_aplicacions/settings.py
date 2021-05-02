@@ -45,6 +45,8 @@ INSTALLED_APPS = [
 
     # boostrap forms
     'crispy_forms',
+
+    'debug_toolbar',
     # Allauth login de google
     'django.contrib.sites',
     'allauth',
@@ -63,6 +65,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'portal_aplicacions.urls'
@@ -151,3 +154,7 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_ADAPTER = 'login.adapters.MyAccountAdapter'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = "None"
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
