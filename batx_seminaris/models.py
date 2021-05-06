@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth import get_user_model
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -23,7 +23,7 @@ class Seminari(models.Model):
 class Solicitud(models.Model):
     plantajament = models.TextField()
     seminari = models.ForeignKey(Seminari, on_delete=models.CASCADE)
-    usuari = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    usuari = models.ForeignKey(User, on_delete=models.CASCADE)
     assignat = models.BooleanField(default=False)
 
    

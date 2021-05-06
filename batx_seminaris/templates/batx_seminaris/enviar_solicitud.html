@@ -1,0 +1,72 @@
+{% extends "aplicacions/llistar_aplicacions.html" %}
+{% block aplicacio %}
+{% load static %}
+
+<div class="text-center pt-4">
+    <h3>Sol·licitud Tema Treball</h3>
+</div>
+<div class="row justify-content-md-center pt-3">
+    <div class="col-md-9 overflow-auto" style="height:75vh">
+        <form action="" method="post">
+            <div>
+                <h4>Primera Opcio</h4>
+                <div class="mb-2 form-group">
+                    <label for="departamentPrimeraOpcio">Departament</label>
+                    <select id="departamentPrimeraOpcio" class="form-select form-select-sm" >
+                        <option selected disabled>Please select</option>
+                        {% for departament in llista_departaments %}
+                            <option value="{{departament.id}}">{{departament.nom}}</option>
+                        {% endfor%}
+                    </select>
+                </div>
+                <div class="mb-2 form-group">
+                    <label for="seminariPrimeraOpcio">Seminari</label>
+                    <select id="seminariPrimeraOpcio" class="form-select form-select-sm" aria-label="form-select-sm">
+                        <option disabled selected value>Selecciona Seminari</option>
+                    </select>
+                </div>
+                <div class="mb-2 form-group">
+                    <label for="plantajamentPrimeraOpcio" class="form-label">Example textarea</label>
+                    <textarea class="form-control" id="plantajamentPrimeraOpcio" rows="8"></textarea>
+                </div>
+            </div>
+            <div id="segonaOpcio" class="mt-5 d-none">
+                <h4>Segona Opcio</h4>
+                <div class="mb-2 form-group">
+                    <label for="departamentSegonaOpcio">Departament</label>
+                    <select id="departamentSegonaOpcio" class="form-select form-select-sm ">
+                    </select>
+                </div>
+                <div class="mb-2 form-group">
+                    <label for="seminariSegonaOpcio">Seminari</label>
+                    <select id="seminariSegonaOpcio" class="form-select form-select-sm" aria-label="form-select-sm">
+                        <option disabled selected value>Selecciona Seminari</option>
+                    </select>
+                </div>
+                <div class="mb-2 form-group">
+                    <label for="plantajamentSegonaOpcio" class="form-label">Example textarea</label>
+                    <textarea class="form-control" id="plantajamentSegonaOpcio" rows="8"></textarea>
+                </div>
+            </div>
+            <div id="terceraOpcio" class="mt-5 d-none">
+                <h4>Tercera Opcio</h4>
+                <div class="mb-2 form-group">
+                    <label for="departamentTerceraOpcio">Departament</label>
+                    <select id="departamentTerceraOpcio" class="form-select form-select-sm ">
+                    </select>
+                </div>
+                <div class="mb-2 form-group">
+                    <label for="seminariTerceraOpcio">Seminari</label>
+                    <select id="seminariTerceraOpcio" class="form-select form-select-sm" aria-label="form-select-sm">
+                        <option disabled selected value>Selecciona Seminari</option>
+                    </select>
+                </div>
+                <div class="mb-2 form-group">
+                    <label for="plantajamentTerceraOpcio" class="form-label">Example textarea</label>
+                    <textarea class="form-control" id="plantajamentTerceraOpcio" rows="8"></textarea>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

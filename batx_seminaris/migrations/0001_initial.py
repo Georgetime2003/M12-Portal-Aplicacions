@@ -39,12 +39,4 @@ class Migration(migrations.Migration):
                 ('usuari', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),
-        migrations.CreateModel(
-            name='SeminariAssignat',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('seminari', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='batx_seminaris.seminari')),
-                ('usuari', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-            ],
-        ),
     ]

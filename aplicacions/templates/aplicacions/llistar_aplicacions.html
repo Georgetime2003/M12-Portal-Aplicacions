@@ -24,7 +24,10 @@
       <p>No hi han aplicacions</p>
       {% endif %}
     </div>
-    <div class="col-9 mx-auto vh-100 bg-light">APP</div>
+    <div class="col-9 mx-auto bg-light">
+      {% block aplicacio %}
+      {% endblock %}
+    </div>
   </div>
 </div>
 {% endblock content %}
