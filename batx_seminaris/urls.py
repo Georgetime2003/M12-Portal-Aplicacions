@@ -11,6 +11,7 @@ from .views import (
     EnviarSolicitud,
     get_json_seminari_data,
     get_json_departament_data,
+    get_json_departament2_data,
 )
 app_name = "batxSeminaris"
 urlpatterns = [
@@ -25,6 +26,8 @@ urlpatterns = [
     path('eliminar_seminari/<int:pk>/',EliminarSeminari.as_view() , name='eliminar-seminari'),
 
     path('seminari-json/<int:departament_id>/', get_json_seminari_data, name='seminari-json'),
-    path('departament-json/<int:departament_id>/', get_json_departament_data, name='seminari-json'),
+    path('departament-json/<int:departament_id>/', get_json_departament_data, name='departament-json'),
+    path('departament-json/<int:departament_id>/<int:departament2_id>/', get_json_departament2_data, name='departament-json2'),
+
 
 ]

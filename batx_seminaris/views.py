@@ -65,15 +65,22 @@ class EliminarSeminari(LoginRequiredMixin, generic.DeleteView):
 #View pagina principal solicitud
 def EnviarSolicitud(request):
     if request.method == 'POST':
-        form = SolicitudForm(request.POST)
-        if form.is_valid():
-           
-            return HttpResponseRedirect('/thanks/')
+        departamentPrimeraOpcio = request.POST.get('departamentPrimeraOpcio')
+        seminariPrimeraOpcio = request.POST.get('seminariPrimeraOpcio')
+        plantajamentPrimeraOpcio = request.POST.get('plantajamentPrimeraOpcio')
+
+        departamentSegonaOpcio = request.POST.get('departamentSegonaOpcio')
+        seminariSegonaOpcio = request.POST.get('seminariSegonaOpcio')
+        plantajamentSegonaOpcio = request.POST.get('plantajamentSegonaOpcio')
+
+        departamentTerceraOpcio = request.POST.get('departamentTerceraOpcio')
+        seminariTerceraOpcio = request.POST.get('seminariTerceraOpcio')
+        plantajamentTerceraOpcio = request.POST.get('plantajamentTerceraOpcio')
+  
     else:
         aplicacions = Aplicacio.objects.all()
         departaments = Departament.objects.values()
-        departaments2 = Departament.objects.exclude(id=1).values()
-        print(departaments2)
+
     return render(request, 'batx_seminaris/enviar_solicitud.html', {'llista_aplicacions':aplicacions,'llista_departaments':departaments})
 
 def get_json_seminari_data(request, *args, **kwargs):
@@ -85,3 +92,12 @@ def get_json_departament_data(request, *args, **kwargs):
     selected_departament = kwargs.get('departament_id')
     obj_departaments = list(Departament.objects.exclude(id=selected_departament).values())
     return JsonResponse({'data':obj_departaments})
+
+
+def get_json_departament2_data(request, *args, **kwargs):
+    selected_departament = kwargs.get('departament_id')
+    selected_departament2 = kwargs.get('departament2_id')
+    ex=[selected_departament,selected_departament2]
+    obj_departaments = list(Departament.objects.exclude(id__in=ex).values())
+    return JsonResponse({'data':obj_departaments})
+
