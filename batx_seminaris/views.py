@@ -19,26 +19,26 @@ class MantenimentFormulari(LoginRequiredMixin, generic.ListView):
 
 
 def AssignarProjecte(request):
-    Solicituds = Solicitud.objects.all()
-    placesDisponibles = Solicitud.objects.values('seminari').annotate(num_places=F('seminari__places')-Count(Case(When(assignat=True, then=1))))
-    solicitudsPerId={}
-    for solicitud in Solicituds:
+    if request.method == 'POST':
+        solicitudId = request.POST.get('solicitudId')
+        usuariId = request.POST.get('usuariId')
+        seminariId = request.POST.get('seminariId')
 
-        solicitudsPerId.setdefault(solicitud.usuari_id, []).append(solicitud)
-    llistaSolicitudsId = sorted(solicitudsPerId.items())
-    return render(request, 'batx_seminaris/assignar_projecte.html', {'llista_solicituds': llistaSolicitudsId,'placesDisponibles':placesDisponibles})
-
-"""
-class AssignarProjecte(LoginRequiredMixin, generic.ListView):
-    template_name = "batx_seminaris/assignar_projecte.html"
-    context_object_name = "llista_solicituds"
-    Solicituds = Solicitud.objects.all()
-    a={}
-    for solicitud in Solicituds:
-        a.setdefault(solicitud.usuari_id, []).append(solicitud)
-    queryset = sorted(a.items())
-
-"""
+        SolicitudsUsuari = Solicitud.objects.filter(usuari_id=usuariId)
+        SolicitudAssignada = SolicitudsUsuari.filter(assignat=True).update(assignat=False)
+        SolicitudAssignar = SolicitudsUsuari.filter(id=solicitudId).update(assignat=True)
+        #placesDisponibles= list(Solicitud.objects.filter(seminari_id=seminariId).values('seminari').annotate(num_places=F('seminari__places')-Count(Case(When(assignat=True, then=1)))))
+        placesDisponibles = list(Solicitud.objects.values('seminari').annotate(num_places=F('seminari__places')-Count(Case(When(assignat=True, then=1)))))
+        return JsonResponse({'data':placesDisponibles})
+    else:
+        Solicituds = Solicitud.objects.all()
+        placesDisponibles = Solicitud.objects.values('seminari').annotate(num_places=F('seminari__places')-Count(Case(When(assignat=True, then=1))))
+        solicitudsPerId={}
+        for solicitud in Solicituds:
+            solicitudsPerId.setdefault(solicitud.usuari_id, []).append(solicitud)
+        llistaSolicitudsId = sorted(solicitudsPerId.items())
+        
+        return render(request, 'batx_seminaris/assignar_projecte.html', {'llista_solicituds': llistaSolicitudsId,'placesDisponibles':placesDisponibles})
 
 
 class CrearDepartament(LoginRequiredMixin, generic.CreateView):

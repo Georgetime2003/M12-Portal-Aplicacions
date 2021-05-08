@@ -1,3 +1,4 @@
+'use strict';
 //Funcions per obrir els modals de departament 
 function obrir_modal_crear_departament(url){
     $('#modalAfegirDepartament').load(url,function(){

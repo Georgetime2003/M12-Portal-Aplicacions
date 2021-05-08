@@ -24,10 +24,8 @@ urlpatterns = [
     path('crear_seminari/',CrearSeminari.as_view() , name='crear-seminari'),
     path('modificar_seminari/<int:pk>/',ModificarSeminari.as_view() , name='modificar-seminari'),
     path('eliminar_seminari/<int:pk>/',EliminarSeminari.as_view() , name='eliminar-seminari'),
-
+    
     path('seminari-json/<int:departament_id>/', get_json_seminari_data, name='seminari-json'),
     path('departament-json/<int:departament_id>/', get_json_departament_data, name='departament-json'),
     path('departament-json/<int:departament_id>/<int:departament2_id>/', get_json_departament2_data, name='departament-json2'),
-
-
 ]

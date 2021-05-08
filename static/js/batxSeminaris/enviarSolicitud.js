@@ -1,3 +1,4 @@
+'use strict';
 const departamentPrimeraOpcio = document.getElementById("departamentPrimeraOpcio")
 const departamentSegonaOpcio = document.getElementById("departamentSegonaOpcio")
 const departamentTerceraOpcio = document.getElementById("departamentTerceraOpcio")
