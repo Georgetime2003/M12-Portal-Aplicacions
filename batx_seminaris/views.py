@@ -27,7 +27,6 @@ def AssignarProjecte(request):
         SolicitudsUsuari = Solicitud.objects.filter(usuari_id=usuariId)
         SolicitudAssignada = SolicitudsUsuari.filter(assignat=True).update(assignat=False)
         SolicitudAssignar = SolicitudsUsuari.filter(id=solicitudId).update(assignat=True)
-        #placesDisponibles= list(Solicitud.objects.filter(seminari_id=seminariId).values('seminari').annotate(num_places=F('seminari__places')-Count(Case(When(assignat=True, then=1)))))
         placesDisponibles = list(Solicitud.objects.values('seminari').annotate(num_places=F('seminari__places')-Count(Case(When(assignat=True, then=1)))))
         return JsonResponse({'data':placesDisponibles})
     else:

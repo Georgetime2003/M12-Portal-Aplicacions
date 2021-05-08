@@ -93,7 +93,7 @@
                                   usuari-id="{{solicitud.usuari_id}}" 
                                   solicitud-id="{{solicitud.id}}"
                                   seminari-id="{{solicitud.seminari_id}}"
-                                  data-bs-trigger="hover focus" 
+                                  data-bs-trigger="hover" 
                                   data-bs-placement="top" 
                                   data-bs-content="Places Disponibles: {% for places in placesDisponibles %}{% if solicitud.seminari_id == places.seminari %}{{places.num_places}}{% endif %} {% endfor %} " >{{solicitud.seminari}}</button>
                           </td>

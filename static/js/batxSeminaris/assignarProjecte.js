@@ -1,6 +1,6 @@
 'use strict';
 /* Funcio color background botons*/ 
-$("button").click(function() {
+$("button").on(function() {
     let trPare = $(this).parent().parent()
     let buttons = trPare.find("button").not(":last")
     if($(this).text()=="Mostrar"){
@@ -20,16 +20,15 @@ $("button").click(function() {
 });
 
 /*Funcio filtrar taula nom*/
-$(document).ready(function(){
-  $("#alumne").on("keyup", function() {
-    let value = $(this).val().toLowerCase();
-    $("#taulaSolicituds tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
+$("#alumne").on("keyup", function() {
+  let value = $(this).val().toLowerCase();
+  $("#taulaSolicituds tr").filter(function() {
+    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
   });
 });
+
 /*Funcio filtrar taula grup */ 
-$('#filter').change(function() {
+$('#filter').on(function() {
   let grup = $(this).val()
   $("#taulaSolicituds tr").filter(function() {
     if(grup =="Tots") return $(this).toggle(true)
@@ -40,9 +39,7 @@ $('#filter').change(function() {
 /*Assignar Seminari i actualitzar places*/
 const csrf = document.getElementsByName('csrfmiddlewaretoken')
 
-$("button").click(function() {
-    let trPare = $(this).parent().parent()
-    let buttons = trPare.find("button").not(":last")
+$("button").on(function() {
     let solicitudId= $(this).attr("solicitud-id")
     let usuariId= $(this).attr("usuari-id") 
     let seminariId= $(this).attr("seminari-id") 
