@@ -150,33 +150,31 @@ var forms = document.querySelectorAll('.needs-validation')
 // Loop over them and prevent submission
 Array.prototype.slice.call(forms).forEach(function (form) {
     form.addEventListener('submit', function (event) {
-      if (!form.checkValidity()) {
-        event.preventDefault()
-        event.stopPropagation()
-      }else{
-        $.ajax({
-            type: 'POST',
-            url: '/batxilleratProjecte/',
-            data: {
-                'csrfmiddlewaretoken': csrf[0].value,
-                'departamentPrimeraOpcio': departamentPrimeraOpcio.value,
-                'seminariPrimeraOpcio': seminariPrimeraOpcio.value,
-                'plantajamentPrimeraOpcio': $('#plantajamentPrimeraOpcio').val(),
-                'departamentSegonaOpcio': departamentSegonaOpcio.value,
-                'seminariSegonaOpcio': seminariSegonaOpcio.value,
-                'plantajamentSegonaOpcio': $('#plantajamentSegonaOpcio').val(),
-                'departamentTerceraOpcio': departamentTerceraOpcio.value,
-                'seminariTerceraOpcio': seminariTerceraOpcio.value,
-                'plantajamentTerceraOpcio': $('#plantajamentTerceraOpcio').val(),
-            },
-            success: function(response){
-                console.log(response)
-            },
-            error: function(error){
-                console.log(error)
-            }
-        })
-      }
-      form.classList.add('was-validated')
+        if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+        }else{
+            event.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: '/batxilleratProjecte/',
+                data: {
+                    'csrfmiddlewaretoken': csrf[0].value,
+                    'seminariPrimeraOpcio': seminariPrimeraOpcio.value,
+                    'plantajamentPrimeraOpcio': $('#plantajamentPrimeraOpcio').val(),
+                    'seminariSegonaOpcio': seminariSegonaOpcio.value,
+                    'plantajamentSegonaOpcio': $('#plantajamentSegonaOpcio').val(),
+                    'seminariTerceraOpcio': seminariTerceraOpcio.value,
+                    'plantajamentTerceraOpcio': $('#plantajamentTerceraOpcio').val(),
+                },
+                success: function(response){
+                    window.location.reload();
+                },
+                error: function(error){
+                    console.log(error)
+                }
+            })
+        }
+        form.classList.add('was-validated')
     }, false)
 })

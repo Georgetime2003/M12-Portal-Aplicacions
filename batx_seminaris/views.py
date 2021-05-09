@@ -8,16 +8,18 @@ from .forms import DepartamentForm, SeminariForm,ModificarSeminariForm
 from django.db.models.query import QuerySet
 from collections import defaultdict
 from django.http import JsonResponse
+from django.core.exceptions import ValidationError
 from django.db.models import Q, Count,Sum,Case, When, F
-
-
+from django.template.loader import render_to_string
+from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 
 class MantenimentFormulari(LoginRequiredMixin, generic.ListView):
     template_name = "batx_seminaris/manteniment_formulari.html"
     context_object_name = "llista_manteniment"
     queryset = Departament.objects.all()
 
-
+@login_required
 def AssignarProjecte(request):
     if request.method == 'POST':
         solicitudId = request.POST.get('solicitudId')
@@ -75,26 +77,46 @@ class EliminarSeminari(LoginRequiredMixin, generic.DeleteView):
     queryset = Seminari.objects.all()
 
 #View pagina principal solicitud
+@login_required
 def EnviarSolicitud(request):
     if request.method == 'POST':
-        departamentPrimeraOpcio = request.POST.get('departamentPrimeraOpcio')
+        user = request.user
         seminariPrimeraOpcio = request.POST.get('seminariPrimeraOpcio')
-        plantajamentPrimeraOpcio = request.POST.get('plantajamentPrimeraOpcio')
-
-        departamentSegonaOpcio = request.POST.get('departamentSegonaOpcio')
         seminariSegonaOpcio = request.POST.get('seminariSegonaOpcio')
-        plantajamentSegonaOpcio = request.POST.get('plantajamentSegonaOpcio')
-
-        departamentTerceraOpcio = request.POST.get('departamentTerceraOpcio')
         seminariTerceraOpcio = request.POST.get('seminariTerceraOpcio')
-        plantajamentTerceraOpcio = request.POST.get('plantajamentTerceraOpcio')
-        
-        return render(request,'aplicacions/llistar_aplicacions.html')
-  
+
+        seminariOpcio1 = Seminari.objects.get(pk=seminariPrimeraOpcio)
+        seminariOpcio2 = Seminari.objects.get(pk=seminariSegonaOpcio)
+        seminariOpcio3 = Seminari.objects.get(pk=seminariTerceraOpcio)
+
+        solicitud = Solicitud()
+        solicitud2 = Solicitud()
+        solicitud3 = Solicitud()
+
+        solicitud.seminari = seminariOpcio1
+        solicitud.usuari = user
+        solicitud.plantajament = request.POST.get('plantajamentPrimeraOpcio')
+        solicitud.save()
+
+        solicitud2.seminari = seminariOpcio2
+        solicitud2.usuari = user
+        solicitud2.plantajament = request.POST.get('plantajamentSegonaOpcio')
+        solicitud2.save()
+
+        solicitud3.seminari = seminariOpcio3
+        solicitud3.usuari = user
+        solicitud3.plantajament = request.POST.get('plantajamentTerceraOpcio')
+        solicitud3.save()
+        return JsonResponse({'success': True}, status=201)
     else:
         aplicacions = Aplicacio.objects.all()
-        departaments = Departament.objects.values()
-        return render(request, 'batx_seminaris/enviar_solicitud.html', {'llista_aplicacions':aplicacions,'llista_departaments':departaments})
+        countSolicituds =  Solicitud.objects.filter(usuari=request.user).count()
+        if(countSolicituds >=3):
+            return render(request, 'batx_seminaris/solicitud_enviada.html',{'llista_aplicacions':aplicacions})
+        else:    
+            aplicacions = Aplicacio.objects.all()
+            departaments = Departament.objects.values()
+            return render(request, 'batx_seminaris/enviar_solicitud.html', {'llista_aplicacions':aplicacions,'llista_departaments':departaments})
 
 def get_json_seminari_data(request, *args, **kwargs):
     selected_departament = kwargs.get('departament_id')
