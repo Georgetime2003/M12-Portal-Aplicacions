@@ -1,6 +1,6 @@
 'use strict';
 /* Funcio color background botons*/ 
-$("button").on(function() {
+$("button").click(function() {
     let trPare = $(this).parent().parent()
     let buttons = trPare.find("button").not(":last")
     if($(this).text()=="Mostrar"){
@@ -28,7 +28,7 @@ $("#alumne").on("keyup", function() {
 });
 
 /*Funcio filtrar taula grup */ 
-$('#filter').on(function() {
+$('#filter').click(function() {
   let grup = $(this).val()
   $("#taulaSolicituds tr").filter(function() {
     if(grup =="Tots") return $(this).toggle(true)
@@ -39,7 +39,7 @@ $('#filter').on(function() {
 /*Assignar Seminari i actualitzar places*/
 const csrf = document.getElementsByName('csrfmiddlewaretoken')
 
-$("button").on(function() {
+$("button").click(function() {
     let solicitudId= $(this).attr("solicitud-id")
     let usuariId= $(this).attr("usuari-id") 
     let seminariId= $(this).attr("seminari-id") 

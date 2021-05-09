@@ -7,7 +7,7 @@
 </div>
 <div class="row justify-content-md-center pt-3 overflow-auto" style="height:75vh">
     <div class="col-md-9">
-        <form id="formulariSolicituds" method="post">
+        <form id="formulariSolicituds" class="needs-validation" method="post" novalidate>
             {% csrf_token %} 
             <div>
                 <h4>Primera Opcio</h4>
@@ -27,8 +27,9 @@
                     </select>
                 </div>
                 <div class="mb-2 form-group">
-                    <label for="plantajamentPrimeraOpcio" class="form-label">Example textarea</label>
-                    <textarea class="form-control is-invalid" id="plantajamentPrimeraOpcio" rows="8" required></textarea>
+                    <label for="plantajamentPrimeraOpcio" class="form-label">Plantajament</label>
+                    <textarea class="form-control" id="plantajamentPrimeraOpcio"  rows="8" placeholder="Heu d'explicar les raons que us han dut a triar aquest tema i les fons d'informació que penseu utilitzar" required></textarea>
+                    <div class="invalid-feedback">El plantajament no pot estar buid</div>
                 </div>
             </div>
             <div id="segonaOpcio" class="mt-5 d-none">
@@ -46,8 +47,9 @@
                     </select>
                 </div>
                 <div class="mb-2 form-group">
-                    <label for="plantajamentSegonaOpcio is-invalid" class="form-label">Example textarea</label>
-                    <textarea class="form-control is-invalid" id="plantajamentSegonaOpcio" required rows="8"></textarea>
+                    <label for="plantajamentSegonaOpcio" class="form-label">Plantajament</label>
+                    <textarea class="form-control" id="plantajamentSegonaOpcio" required rows="8"></textarea>
+                    <div class="invalid-feedback">El plantajament no pot estar buid</div>
                 </div>
             </div>
             <div id="terceraOpcio" class="mt-5 d-none">
@@ -65,8 +67,9 @@
                     </select>
                 </div>
                 <div class="mb-2 form-group">
-                    <label for="plantajamentTerceraOpcio" class="form-label">Example textarea</label>
-                    <textarea class="form-control is-invalid" id="plantajamentTerceraOpcio" required rows="8"></textarea>
+                    <label for="plantajamentTerceraOpcio" class="form-label">Plantajament</label>
+                    <textarea class="form-control" id="plantajamentTerceraOpcio" required rows="8"></textarea>
+                    <div class="invalid-feedback">El plantajament no pot estar buid</div>
                 </div>
             </div>
             <button id="botoSubmit" type="submit" class="btn btn-dark d-none w-100 pt-2 ">Enviar Formulari</button>

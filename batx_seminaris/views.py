@@ -23,7 +23,6 @@ def AssignarProjecte(request):
         solicitudId = request.POST.get('solicitudId')
         usuariId = request.POST.get('usuariId')
         seminariId = request.POST.get('seminariId')
-
         SolicitudsUsuari = Solicitud.objects.filter(usuari_id=usuariId)
         SolicitudAssignada = SolicitudsUsuari.filter(assignat=True).update(assignat=False)
         SolicitudAssignar = SolicitudsUsuari.filter(id=solicitudId).update(assignat=True)
@@ -89,12 +88,13 @@ def EnviarSolicitud(request):
         departamentTerceraOpcio = request.POST.get('departamentTerceraOpcio')
         seminariTerceraOpcio = request.POST.get('seminariTerceraOpcio')
         plantajamentTerceraOpcio = request.POST.get('plantajamentTerceraOpcio')
+        
+        return render(request,'aplicacions/llistar_aplicacions.html')
   
     else:
         aplicacions = Aplicacio.objects.all()
         departaments = Departament.objects.values()
-
-    return render(request, 'batx_seminaris/enviar_solicitud.html', {'llista_aplicacions':aplicacions,'llista_departaments':departaments})
+        return render(request, 'batx_seminaris/enviar_solicitud.html', {'llista_aplicacions':aplicacions,'llista_departaments':departaments})
 
 def get_json_seminari_data(request, *args, **kwargs):
     selected_departament = kwargs.get('departament_id')

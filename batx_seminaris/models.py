@@ -25,6 +25,7 @@ class Solicitud(models.Model):
     seminari = models.ForeignKey(Seminari, on_delete=models.CASCADE)
     usuari = models.ForeignKey(User, on_delete=models.CASCADE)
     assignat = models.BooleanField(default=False)
+    
 
 
    

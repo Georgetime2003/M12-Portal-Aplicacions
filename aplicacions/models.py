@@ -8,6 +8,13 @@ class Aplicacio(models.Model):
     data_limit_inici = models.DateField()
     data_limit_fi = models.DateField()
 
+    class Meta:
+        verbose_name_plural = 'Aplicacions'
+
+    def __str__(self):
+        return self.nom
+
+
     def save(self, *args, **kwargs):
         if self.data_limit_inici > self.data_limit_fi:
             raise ValidationError(

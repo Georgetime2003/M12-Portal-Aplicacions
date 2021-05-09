@@ -75,7 +75,6 @@ departamentSegonaOpcio.addEventListener('change', e=>{
         url: `seminari-json/${departamentSelecionatSegonaOpcio}/`,
         success: function(response){
             const modelsData = response.data
-            console.log(modelsData)
             modelsData.map(item=>{
                 const option = document.createElement('option')
                 option.textContent = item.nom
@@ -114,13 +113,11 @@ seminariSegonaOpcio.addEventListener('change', e=>{
 
 departamentTerceraOpcio.addEventListener('change', e=>{
     const departamentTerceraOpcioValue = e.target.value
-    console.log(departamentTerceraOpcioValue)
     $.ajax({
         type: 'GET',
         url: `seminari-json/${departamentTerceraOpcioValue}/`,
         success: function(response){
             const modelsData = response.data
-            console.log(modelsData)
             modelsData.map(item=>{
                 const option = document.createElement('option')
                 option.textContent = item.nom
@@ -138,28 +135,48 @@ departamentTerceraOpcio.addEventListener('change', e=>{
     })
 })
 
-formulariSolicituds.addEventListener('submit', e=>{
-    e.preventDefault()
-    $.ajax({
-        type: 'POST',
-        url: '/batxilleratProjecte/',
-        data: {
-            'csrfmiddlewaretoken': csrf[0].value,
-            'departamentPrimeraOpcio': departamentPrimeraOpcio.value,
-            'seminariPrimeraOpcio': seminariPrimeraOpcio.value,
-            'plantajamentPrimeraOpcio': $('#plantajamentPrimeraOpcio').val(),
-            'departamentSegonaOpcio': departamentSegonaOpcio.value,
-            'seminariSegonaOpcio': seminariSegonaOpcio.value,
-            'plantajamentSegonaOpcio': $('#plantajamentSegonaOpcio').val(),
-            'departamentTerceraOpcio': departamentTerceraOpcio.value,
-            'seminariTerceraOpcio': seminariTerceraOpcio.value,
-            'plantajamentTerceraOpcio': $('#plantajamentTerceraOpcio').val(),
-        },
-        success: function(response){
-            console.log(response)
-        },
-        error: function(error){
-            console.log(error)
+Array.prototype.slice.call(formulariSolicituds).forEach(function(form){
+    formulariSolicituds.addEventListener('submit', e=>{
+        if(!form.checkValidity()){
+            e.preventDefault()
+            e.stopPropagation()
         }
-    })
+        form.classList.add("was-validated")
+    },false)
+})
+
+var forms = document.querySelectorAll('.needs-validation')
+
+// Loop over them and prevent submission
+Array.prototype.slice.call(forms).forEach(function (form) {
+    form.addEventListener('submit', function (event) {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }else{
+        $.ajax({
+            type: 'POST',
+            url: '/batxilleratProjecte/',
+            data: {
+                'csrfmiddlewaretoken': csrf[0].value,
+                'departamentPrimeraOpcio': departamentPrimeraOpcio.value,
+                'seminariPrimeraOpcio': seminariPrimeraOpcio.value,
+                'plantajamentPrimeraOpcio': $('#plantajamentPrimeraOpcio').val(),
+                'departamentSegonaOpcio': departamentSegonaOpcio.value,
+                'seminariSegonaOpcio': seminariSegonaOpcio.value,
+                'plantajamentSegonaOpcio': $('#plantajamentSegonaOpcio').val(),
+                'departamentTerceraOpcio': departamentTerceraOpcio.value,
+                'seminariTerceraOpcio': seminariTerceraOpcio.value,
+                'plantajamentTerceraOpcio': $('#plantajamentTerceraOpcio').val(),
+            },
+            success: function(response){
+                console.log(response)
+            },
+            error: function(error){
+                console.log(error)
+            }
+        })
+      }
+      form.classList.add('was-validated')
+    }, false)
 })
