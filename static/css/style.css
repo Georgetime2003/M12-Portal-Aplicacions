@@ -20,12 +20,10 @@
   min-height: 60vh;
 }
 
-/*Sidebar batx seminaris */
+/*background color botons seminaris*/
 
-.botons:active,
-.botons:focus,
-.botons:hover{
-  background-color: #ffffff26;
+.color-boto:hover{
+  background-color: #6c757d;
 }
 /*Treure border de de tr */
 tr.noBorder td {
@@ -33,4 +31,84 @@ tr.noBorder td {
 }
 .active {
   background-color: #000 !important;
+}
+
+/*wrapper Amagar sidebar*/
+
+#wrapper {
+  padding-left: 0;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+  padding-left: 290px;
+}
+
+#sidebar-wrapper {
+  position: fixed;
+  left: 290px;
+  z-index: 1000;
+  overflow-y: auto;
+  margin-left: -290px;
+  width: 0;
+  height: 100%;
+  background:#212529;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  width: 290px;
+}
+
+#page-content-wrapper {
+  padding: 15px;
+  width: 100%;
+}
+
+#wrapper.toggled #page-content-wrapper {
+  position: absolute;
+  margin-right: -290px;
+}
+
+
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  width: 290px;
+  list-style: none;
+}
+
+@media (min-width: 768px) {
+  #wrapper {
+      padding-left: 290px;
+  }
+
+  #wrapper.toggled {
+      padding-left: 0;
+  }
+
+  #sidebar-wrapper {
+      width: 290px;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+      width: 0;
+  }
+
+  #page-content-wrapper {
+      padding: 20px;
+  }
+
+  #wrapper.toggled #page-content-wrapper {
+      position: relative;
+      margin-right: 0;
+  }
 }

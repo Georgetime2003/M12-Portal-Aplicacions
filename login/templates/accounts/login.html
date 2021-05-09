@@ -1,30 +1,17 @@
 {% extends "accounts/base.html" %}
 {% load socialaccount %} 
 {% block content %}
-<div class=" gradient container-fluid min-vh-100 p-5">
-  <div class="row vertical-center justify-content-center ">
-      <div class="bg-white col-lg-5 border border-light rounded pb-5">
-          <form class=" text-center p-5 size-form" action="#!">
-              <p class="pb-2 h4 mb-4">Portal Sapalomera</p>
-              <p>Uneix-te per utilizar <br> les aplicacions del centre</p>
-              <!-- Sign in button -->
-              <div class="pb-5"></div>
-              <div class="pt-5 pb-5 text-dark ">
-                <a
-                  href="{% provider_login_url 'google' %}"
-                  class=" gradient btn btn btn-lg btn-block"
-                  role="button"
-                  aria-pressed="true"
-                  >Sign in with Google
-                </a>
-              </div>
-              {% if error %}
-                <div class="alert alert-danger" role="alert">
-                  {{error}}
-                </div>
-              {% endif %}
-        </form>
-      </div>
+<section id="login">
+  <div class="login-contenidor">
+    <h1 data-aos="zoom-in">Portal Sapalomera</h1>
+    <h2 data-aos="fade-up">Uneix-te per utilizar les aplicacions del Institut Sapalomera</h2>
+    <a data-aos="fade-up" data-aos-delay="200" href="{% provider_login_url 'google' %}" class="btn-google scrollto">Sign in with Google</a>
   </div>
-</div>
+  {% if error %}
+    <div class="alert alert-danger" role="alert">
+      {{error}}
+    </div>
+  {% endif %}
+</section>
+
 {% endblock %}

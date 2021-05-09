@@ -10,6 +10,8 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
     />
     <link rel="stylesheet" href="{% static 'main.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/login-style.css' %}" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   </head>
   <body>
     {% block content %} {% endblock content %}
@@ -18,5 +20,7 @@
       integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG"
       crossorigin="anonymous"
     ></script>
+    <script type="text/javascript" src="{% static 'js/login/login.js' %}"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   </body>
 </html>
