@@ -6,3 +6,5 @@ window.addEventListener('load', () => {
       mirror: false
     })
 });
+
+$('#error').fadeIn('fast').delay(5000).fadeOut('fast');
