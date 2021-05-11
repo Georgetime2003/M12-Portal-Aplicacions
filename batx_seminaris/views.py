@@ -1,18 +1,39 @@
-from django.shortcuts import render , get_object_or_404 ,redirect
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import render
 from django.views import generic
 from django.urls import reverse_lazy
+from django.http import JsonResponse
+from django.db.models import Count,Case,When,F
+from django.db.models.query import QuerySet
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from aplicacions.models import Aplicacio
 from .models import Departament, Seminari, Solicitud
 from .forms import DepartamentForm, SeminariForm,ModificarSeminariForm
-from django.db.models.query import QuerySet
-from collections import defaultdict
-from django.http import JsonResponse
-from django.core.exceptions import ValidationError
-from django.db.models import Q, Count,Sum,Case, When, F
-from django.template.loader import render_to_string
+
 from django.http import HttpResponse
-from django.contrib.auth.decorators import login_required
+from django.template.loader import get_template
+from xhtml2pdf import pisa
+
+
+def render_pdf_view(request):
+    template_path = 'batx_seminaris/exportar_pdf.html'
+    llistaSolicituds =  Solicitud.objects.filter(assignat=True)
+    context = {'llistaSolicituds': llistaSolicituds}
+    # Create a Django response object, and specify content_type as pdf
+    response = HttpResponse(content_type='application/pdf')
+    #response['Content-Disposition'] = 'attachment; filename="report.pdf"'
+    response['Content-Disposition'] = 'filename="llistaAssignacioProjecte.pdf"'
+    # find the template and render it.
+    template = get_template(template_path)
+    html = template.render(context)
+
+    # create a pdf
+    pisa_status = pisa.CreatePDF(
+       html, dest=response)
+    # if error then show some funy view
+    if pisa_status.err:
+       return HttpResponse('We had some errors <pre>' + html + '</pre>')
+    return response
 
 class MantenimentFormulari(LoginRequiredMixin, generic.ListView):
     template_name = "batx_seminaris/manteniment_formulari.html"

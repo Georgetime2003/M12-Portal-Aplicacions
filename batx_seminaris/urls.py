@@ -12,6 +12,7 @@ from .views import (
     get_json_seminari_data,
     get_json_departament_data,
     get_json_departament2_data,
+    render_pdf_view,
 )
 app_name = "batxSeminaris"
 urlpatterns = [
@@ -28,4 +29,5 @@ urlpatterns = [
     path('seminari-json/<int:departament_id>/', get_json_seminari_data, name='seminari-json'),
     path('departament-json/<int:departament_id>/', get_json_departament_data, name='departament-json'),
     path('departament-json/<int:departament_id>/<int:departament2_id>/', get_json_departament2_data, name='departament-json2'),
+    path('assignarProjecte/exportar_pdf/',render_pdf_view,name='exportar-pdf'),
 ]
