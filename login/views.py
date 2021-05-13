@@ -1,30 +1,25 @@
 from django.shortcuts import render
 from django.views import View
 from django.shortcuts import redirect
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import User
 from allauth.account.views import LoginView
-from .forms import UsuariAfegirGrup
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
-from .decorators import grup_propi
-
+from django.http import JsonResponse
+from .models import Curs,Group
 class GoogleLoginView(LoginView):
-    template_name = 'accounts/login.html'
+    template_name = 'login/login.html'
 
 @login_required
-@grup_propi
-def usuari_grup(request, pk):
-    usuari = User.objects.get(id=pk)
-    if request.method == "POST":
-        if(pk != request.user.id):
-            return redirect("/aplicacions/")
-
-        form = UsuariAfegirGrup(request.POST)
-        if form.is_valid():
-            idCurs = form.cleaned_data['Curs']
-            grup = Group.objects.get(id=idCurs)
-            grup.user_set.add(usuari)
-        return redirect("/aplicacions/")
+def usuari_grup(request):
+    if request.method == 'POST':
+        grup = Group.objects.get(id=request.POST.get('grup'))
+        grup.user_set.add(request.user)
+        return JsonResponse({'success': True}, status=201)
     else:
-        form = UsuariAfegirGrup()
-        return render(request, 'accounts/grup.html', {'form': UsuariAfegirGrup})
+        llista_cursos = Curs.objects.exclude(nom="Professors")
+        return render(request, 'login/grup.html', {'llista_cursos': llista_cursos})
+
+def get_json_grups_data(request, *args, **kwargs):
+    selected_curs = kwargs.get('curs_id')
+    obj_grup = list(Group.objects.filter(curs=selected_curs).values("id","name"))
+    return JsonResponse({'data':obj_grup})

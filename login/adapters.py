@@ -21,16 +21,14 @@ class CustomSocialAccountAdapter(DefaultSocialAccountAdapter):
 class MyAccountAdapter(DefaultAccountAdapter):
 
     def get_signup_redirect_url(self, request):
-        path = "/grup/{id}/"
-        return path.format(id=request.user.id)
+        path = "/grup/"
+        return path
 
     def get_login_redirect_url(self, request):
-        email = request.user.email
-        user = User.objects.get(email=email)
-        grups = user.groups.all()
+        grups = request.user.groups.all()
         if not grups:
-            path = "/grup/{id}/"
-            return path.format(id=request.user.id)
+            path = "/grup/"
+            return path
         else:
             path = "/aplicacions/"
             return path

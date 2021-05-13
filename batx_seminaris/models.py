@@ -10,6 +10,11 @@ class Departament(models.Model):
     def __str__(self):
         return self.nom
 
+    class Meta:
+        permissions = (
+            ("gestio_professor", "Pot mantenir formulari i assignar projecte"),
+        )
+    
 
 class Seminari(models.Model):
     nom = models.CharField(max_length=100)
@@ -25,6 +30,10 @@ class Solicitud(models.Model):
     seminari = models.ForeignKey(Seminari, on_delete=models.CASCADE)
     usuari = models.ForeignKey(User, on_delete=models.CASCADE)
     assignat = models.BooleanField(default=False)
+    class Meta:
+        permissions = (
+            ("enviar_solicitud", "Pot enviar Solicitud"),
+        )
     
 
 

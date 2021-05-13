@@ -1,4 +1,4 @@
-{% extends "accounts/base.html" %}
+{% extends "login/base.html" %}
 {% load crispy_forms_tags %}
 {% load static %}
 {% block content %}
@@ -14,9 +14,23 @@
                 <input type="text" id="disabledTextInput" class="form-control" placeholder="{{user.get_full_name}}">
               </div>
             </fieldset>
-            <form method="post" class="mb-3 pb-5 novalidate needs-validation">
+            <form method="post" class="mb-3 pb-5 needs-validation" novalidate>
               {% csrf_token %} 
-              {{form.Curs|as_crispy_field}}
+              <div class="mb-2 form-group">
+                <label for="curs">Curs</label>
+                <select id="curs" class="form-select form-select-sm" required>
+                    <option value="" hidden>Seleciona el teu Curs</option>
+                    {% for curs in llista_cursos %}
+                        <option value="{{curs.id}}">{{curs.nom}}</option>
+                    {% endfor%}
+                </select>     
+              </div>
+              <div class="mb-2 form-group">
+                <label for="grup">Grup</label>
+                <select id="grup" class="form-select form-select-sm d-node" required>
+                    <option value="" hidden>Seleciona el teu Grup</option>
+                </select>     
+              </div>
               <button type="submit" class="mb-4 w-100 mt-5 btn btn-success">Enviar Formulari</button>
             </form>         
           </div>
