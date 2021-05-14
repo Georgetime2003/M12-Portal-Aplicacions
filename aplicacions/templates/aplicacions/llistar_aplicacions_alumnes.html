@@ -8,18 +8,21 @@
                     <div class="col-11">
                         {% if llista_aplicacions %} {% for aplicacio in llista_aplicacions %}
                         <div class="card mx-1 mt-2">
-                            <div class="card-body">
+                            <div class="card-body  ms-2">
                                 <h5 class="card-title">{{ aplicacio.nom }}</h5>
-                                <p class="card-text">{{ aplicacio.nom }}</p>
+                                <p class="card-text  ms-2">{{ aplicacio.descripcio }}</p>
                                 <div class="row">
-                                    <div class="col-1 my-2">
-                                        <i class="bi bi-clock-history fa-9x"></i>
+                                    <div class="col-1  ms-1 me-1 mt-1 ">
+                                        <i class="bi bi-clock-history fa-9x" style="font-size: 20px;"></i>
                                     </div>
                                     <div class="col-6">
                                         <small>
                                             Disponible fins
                                             <p>{{ aplicacio.data_limit_fi }}</p>
                                         </small>
+                                    </div>
+                                    <div role="button" class="col-1  ms-2">
+                                       <a  href="{% url aplicacio.url_acces %}"><i class="bi bi-box-arrow-in-right" style="font-size: 30px;"></i></a>
                                     </div>
                                 </div>
                             </div>

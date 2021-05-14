@@ -151,7 +151,7 @@ AUTHENTICATION_BACKENDS = (
 
 SOCIALACCOUNT_ADAPTER = "login.adapters.CustomSocialAccountAdapter"
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_ADAPTER = 'login.adapters.MyAccountAdapter'
+ACCOUNT_ADAPTER = 'login.adapters.AdapterCustom'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = "None"
 
@@ -160,3 +160,4 @@ INTERNAL_IPS = [
 ]
 
 LOGIN_URL = '/'
+

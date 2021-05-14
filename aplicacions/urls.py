@@ -1,6 +1,6 @@
 from django.urls import path, include
-from .views import AplicacioLlistatView
+from .views import AplicacioLlistatAlumnesView
 app_name = "aplicacions"
 urlpatterns = [
-    path('', AplicacioLlistatView.as_view(), name='llistat-aplicacio')
+    path('', AplicacioLlistatAlumnesView.as_view(), name='llistat-aplicacio')
 ]

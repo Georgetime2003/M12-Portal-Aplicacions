@@ -1,11 +1,21 @@
 from allauth.account.adapter import DefaultAccountAdapter
 from allauth.socialaccount.adapter import DefaultSocialAccountAdapter
 from allauth.exceptions import ImmediateHttpResponse
-from django.http import HttpResponse
 from django.shortcuts import render
-from django.contrib.auth.models import User, Group
-from django.shortcuts import redirect
+from allauth.account.signals import user_signed_up
+from django.dispatch import receiver
+from .models import Rol
 
+@receiver(user_signed_up)
+def retrieve_social_data(request, user, **kwargs):
+    email= user.email.lower().split("@")
+    if email[0].find("."):
+        usuariRol = Rol(user=user,rol=2)
+        usuariRol.save()
+    else:
+        usuariRol = Rol(user=user,rol=1)
+        usuariRol.save()
+    
 
 class CustomSocialAccountAdapter(DefaultSocialAccountAdapter):
     
@@ -14,11 +24,10 @@ class CustomSocialAccountAdapter(DefaultSocialAccountAdapter):
         error = "La compte de correu ha de ser domini sapalomera '@sapalomera.cat' "
         if email[1] != "sapalomera.cat":
             raise ImmediateHttpResponse(
-                render(request,"accounts/login.html", {'error': error})
+                render(request,"login/login.html", {'error': error})
             )
 
-
-class MyAccountAdapter(DefaultAccountAdapter):
+class AdapterCustom(DefaultAccountAdapter):
 
     def get_signup_redirect_url(self, request):
         path = "/grup/"
