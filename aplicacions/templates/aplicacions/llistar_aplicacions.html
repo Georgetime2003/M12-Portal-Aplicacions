@@ -18,11 +18,16 @@
                                     <div class="col-6">
                                         <small>
                                             Disponible fins
-                                            <p>{{ aplicacio.data_limit_fi }}</p>
+                                            <p>{{ aplicacio.data_limit_fi | date:'d-m-Y' }}</p>
                                         </small>
                                     </div>
-                                    <div role="button" class="col-1  ms-2">
-                                       <a  href="{% url aplicacio.url_acces %}"><i class="bi bi-box-arrow-in-right" style="font-size: 30px;"></i></a>
+                                    {% if user.rol.rol == 1 %}
+                                    <div role="button" class="col-1 me-2 mt-1">
+                                        <a href="{% url aplicacio.url_backend %}"><i class="bi bi-gear" style="font-size: 27px;"></i></a>
+                                    </div>
+                                    {% endif %}
+                                    <div role="button" class="col-1 me-2">
+                                        <a href="{% url aplicacio.url_acces %}"><i class="bi bi-box-arrow-in-right" style="font-size: 31px;"></i></a>
                                     </div>
                                 </div>
                             </div>

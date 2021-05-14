@@ -20,14 +20,17 @@ class CustomSocialAccountAdapter(DefaultSocialAccountAdapter):
 
 class AdapterCustom(DefaultAccountAdapter):
 
+    # Funcio que redirigeix al registrase, si es un usuari a la view per escollir grup
+    # Si l'usuari es professor a aplicacions
     def get_signup_redirect_url(self, request):
-        print(request.user.rol.rol)
         if request.user.rol.rol == 2:
             path = "/grup/"
         else:
             path = "/aplicacions/"
         return path
 
+    # Funcio que redirigeix al login, si es un usuari a la view per escollir grup
+    # Si l'usuari es professor a aplicacions
     def get_login_redirect_url(self, request):
         grups = request.user.groups.all()
         

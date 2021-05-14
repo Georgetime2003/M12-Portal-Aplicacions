@@ -4,10 +4,13 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
 from datetime import date
 
+# Vista que mostra les aplicacions que pot gestionar el professor 
+# i les aplicacions que pot accedir l'alumnat(liminat per les dates limit)
 class AplicacioLlistatView(LoginRequiredMixin, generic.ListView):
     today = date.today()
     template_name = "aplicacions/llistar_aplicacions.html"
     context_object_name = "llista_aplicacions"
+
 
     def get_queryset(self):
         today = date.today()

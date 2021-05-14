@@ -1,7 +1,17 @@
 {% extends "aplicacions/llistar_aplicacions.html" %}
 {% block aplicacio %}
 {% load static %}
-<div class="vertical-center d-flex justify-content-center">
+
+<div class="text-center">
     <h1>Ja has enviat les sol·licituds del projecte</h1>
+</div>
+<div class="row">
+    <div>
+        <ul class="list-group list-group-flush">
+            {% for solicitud  in llista_solicituds %}
+                <li class="list-group-item">Seminari: {{solicitud.seminari}}</li>
+            {% endfor %}
+        </ul>
+    </div>
 </div>
 {% endblock%}

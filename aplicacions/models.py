@@ -13,8 +13,6 @@ class Aplicacio(models.Model):
     llista_grups = models.ManyToManyField(Group)
     llista_encarregats = models.ManyToManyField(User,limit_choices_to={"rol__rol":1}) 
 
-
-
     class Meta:
         verbose_name_plural = 'Aplicacions'
 

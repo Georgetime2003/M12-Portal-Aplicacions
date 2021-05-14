@@ -147,9 +147,9 @@ def EnviarSolicitud(request):
         return JsonResponse({'success': True}, status=201)
     else:
         aplicacions = Aplicacio.objects.all()
-        countSolicituds =  Solicitud.objects.filter(usuari=request.user).count()
-        if(countSolicituds >=3):
-            return render(request, 'batx_seminaris/solicitud_enviada.html',{'llista_aplicacions':aplicacions})
+        solicituds =  Solicitud.objects.filter(usuari=request.user)
+        if(solicituds.count() >=3):
+            return render(request, 'batx_seminaris/solicitud_enviada.html',{'llista_aplicacions':aplicacions,"llista_solicituds":solicituds})
         else:    
             aplicacions = Aplicacio.objects.all()
             departaments = Departament.objects.values()
