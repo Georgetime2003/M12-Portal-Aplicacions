@@ -20,6 +20,7 @@ class Curs(models.Model):
    def __str__(self):
         return self.nom
 
+
 class Group(Group):
     curs = models.ForeignKey(Curs, on_delete=models.CASCADE)
 

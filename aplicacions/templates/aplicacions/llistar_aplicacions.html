@@ -27,8 +27,14 @@
                                 </div>
                             </div>
                         </div>
-                        {% endfor %} {% else %}
-                        <p>No hi han aplicacions</p>
+                        {% endfor %} 
+                        {% else %}
+                        <div class="card mx-1 mt-2">
+                            <div class="card-body  ms-2">
+                                <h5 class="card-title">Aplicacions</h5>
+                                <p class="card-text ">No hi han aplicacions disponibles</p>
+                            </div>
+                        </div>
                         {% endif %}
                     </div>
                 </div>

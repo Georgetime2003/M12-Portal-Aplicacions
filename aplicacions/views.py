@@ -4,9 +4,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
 from datetime import date
 
-class AplicacioLlistatAlumnesView(LoginRequiredMixin, generic.ListView):
+class AplicacioLlistatView(LoginRequiredMixin, generic.ListView):
     today = date.today()
-    template_name = "aplicacions/llistar_aplicacions_alumnes.html"
+    template_name = "aplicacions/llistar_aplicacions.html"
     context_object_name = "llista_aplicacions"
 
     def get_queryset(self):

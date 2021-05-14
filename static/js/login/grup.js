@@ -2,7 +2,6 @@ const forms = document.querySelectorAll('.needs-validation')
 const curs = document.getElementById('curs')
 const grup = document.getElementById('grup')
 const csrf = document.getElementsByName('csrfmiddlewaretoken')
-print(csrf)
 // Validacio formulari grups
 Array.prototype.slice.call(forms).forEach(function (form) {
     form.addEventListener('submit', function (event) {
