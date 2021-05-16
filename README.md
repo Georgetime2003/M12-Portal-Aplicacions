@@ -9,6 +9,13 @@ Crear un entorn virtual amb virtualenv `virtualenv env`.\
 Executar `.\env\Scripts\activate` per activar entorn virtual.\
 Executar `pip install -r requirements.txt` per instal·lar totes les dependències.\
 Executar `python manage.py makemigrations` i `python manage.py migrate`.
+Finalment executar `python manage.py runserver` per iniciar el projecte.
+
+### Administració 
+Es pot accedir a la seccio d'Administració desde http://127.0.0.1:8000/admin/ \
+Usuari: admin Contrasenya: 12345 
+
+Es pot generar un nou administrador amb `python createsuperuser`.
 
 
 ## Desenvolupat amb 🛠️
