@@ -4,7 +4,7 @@
 
 
 ## Instal·lació
-Clonar el repositori amb `git clone `.\
+Clonar el repositori amb `git clone https://github.com/davidruiztornes/M12-Portal-Aplicacions.git `.\
 Executar `pip install -r requirements.txt`.
 
 ## Desenvolupat amb 🛠️
