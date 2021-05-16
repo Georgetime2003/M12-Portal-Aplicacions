@@ -7,7 +7,9 @@
 Clonar el repositori amb `git clone https://github.com/davidruiztornes/M12-Portal-Aplicacions.git `.\
 Crear un entorn virtual amb virtualenv `virtualenv env`.\
 Executar `.\env\Scripts\activate` per activar entorn virtual.\
-Executar `pip install -r requirements.txt` per instal·lar totes les dependències.
+Executar `pip install -r requirements.txt` per instal·lar totes les dependències.\
+Executar `python manage.py makemigrations` i `python manage.py migrate`.
+
 
 ## Desenvolupat amb 🛠️
 
