@@ -5,7 +5,7 @@
 
 ## Instal·lació
 Clonar el repositori amb `git clone `.
-executar `pip install -r requirements.txt`.
+Executar `pip install -r requirements.txt`.
 
 ------------
 ## Desenvolupat amb 🛠️
