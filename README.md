@@ -7,7 +7,6 @@
 Clonar el repositori amb `git clone `.\
 Executar `pip install -r requirements.txt`.
 
-------------
 ## Desenvolupat amb 🛠️
 
 ### Frontend:
