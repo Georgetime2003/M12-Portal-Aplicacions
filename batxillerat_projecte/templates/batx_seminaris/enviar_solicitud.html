@@ -1,0 +1,84 @@
+{% extends "aplicacions/llistar_aplicacions.html" %}
+{% block aplicacio %}
+{% load static %}
+
+<div>
+    <div class="row justify-content-md-center pt-3 overflow-auto" style="height:82vh ">
+        <div class="col-md-9">
+            <div class="text-center pt-2 mb-5">
+                <h3>Sol·licitud Tema Treball</h3>
+            </div>
+            <form id="formulariSolicituds" class="needs-validation mt-5" method="post" novalidate>
+                {% csrf_token %} 
+                <div>
+                    <h4>Primera Opcio</h4>
+                    <div class="mb-2 form-group">
+                        <label for="departamentPrimeraOpcio">Departament</label>
+                        <select id="departamentPrimeraOpcio" class="form-select form-select-sm" required>
+                            <option value="" hidden>Seleciona Departament</option>
+                            {% for departament in llista_departaments %}
+                                <option value="{{departament.id}}">{{departament.nom}}</option>
+                            {% endfor%}
+                        </select>
+                    </div>
+                    <div class="mb-2 form-group">
+                        <label for="seminariPrimeraOpcio">Seminari</label>
+                        <select id="seminariPrimeraOpcio" class="form-select form-select-sm" required>
+                            <option value="" hidden>Selecciona Seminari</option>
+                        </select>
+                    </div>
+                    <div class="mb-2 form-group">
+                        <label for="plantajamentPrimeraOpcio" class="form-label">Plantajament</label>
+                        <textarea class="form-control" id="plantajamentPrimeraOpcio"  rows="8" placeholder="Heu d'explicar les raons que us han dut a triar aquest tema i les fons d'informació que penseu utilitzar" required></textarea>
+                        <div class="invalid-feedback">El plantajament no pot estar buid</div>
+                    </div>
+                </div>
+                <div id="segonaOpcio" class="mt-5 d-none">
+                    <h4>Segona Opcio</h4>
+                    <div class="mb-2 form-group">
+                        <label for="departamentSegonaOpcio">Departament</label>
+                        <select id="departamentSegonaOpcio" class="form-select form-select-sm" required>
+                            <option value="" hidden>Selecciona Departament</option>
+                        </select>
+                    </div>
+                    <div class="mb-2 form-group">
+                        <label for="seminariSegonaOpcio">Seminari</label>
+                        <select id="seminariSegonaOpcio" class="form-select form-select-sm" required>
+                            <option value="" hidden >Selecciona Seminari</option>
+                        </select>
+                    </div>
+                    <div class="mb-2 form-group">
+                        <label for="plantajamentSegonaOpcio" class="form-label">Plantajament</label>
+                        <textarea class="form-control" id="plantajamentSegonaOpcio" placeholder="Heu d'explicar les raons que us han dut a triar aquest tema i les fons d'informació que penseu utilitzar" required rows="8"></textarea>
+                        <div class="invalid-feedback">El plantajament no pot estar buid</div>
+                    </div>
+                </div>
+                <div id="terceraOpcio" class="mt-5 d-none">
+                    <h4>Tercera Opcio</h4>
+                    <div class="mb-2 form-group">
+                        <label for="departamentTerceraOpcio">Departament</label>
+                        <select id="departamentTerceraOpcio" class="form-select form-select-sm" required>
+                            <option value="" hidden>Selecciona Departament</option>
+                        </select>
+                    </div>
+                    <div class="mb-2 form-group">
+                        <label for="seminariTerceraOpcio">Seminari</label>
+                        <select id="seminariTerceraOpcio" class="form-select form-select-sm" required>
+                            <option value="" hidden>Selecciona Seminari</option>
+                        </select>
+                    </div>
+                    <div class="mb-2 form-group">
+                        <label for="plantajamentTerceraOpcio" class="form-label">Plantajament</label>
+                        <textarea class="form-control" id="plantajamentTerceraOpcio" placeholder="Heu d'explicar les raons que us han dut a triar aquest tema i les fons d'informació que penseu utilitzar" required rows="8"></textarea>
+                        <div class="invalid-feedback">El plantajament no pot estar buid</div>
+                    </div>
+                </div>
+                <button id="botoSubmit" type="submit" class="btn btn-dark d-none w-100 pt-2 ">Enviar Formulari</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block extrajs %}
+    <script defer type="text/javascript" src="{% static 'js/batxilleratProjecte/enviarSolicitud.js' %}"></script>
+{% endblock extrajs %}

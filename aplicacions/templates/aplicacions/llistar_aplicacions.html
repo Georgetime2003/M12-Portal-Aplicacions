@@ -21,13 +21,13 @@
                                             <p>{{ aplicacio.data_limit_fi | date:'d-m-Y' }}</p>
                                         </small>
                                     </div>
-                                    {% if user.rol.rol == 1 %}
+                                    {% if user.rol.rol == 1 or user.is_staff %}
                                     <div role="button" class="col-1 me-2 mt-1">
-                                        <a href="{% url aplicacio.url_backend %}"><i class="bi bi-gear" style="font-size: 27px;"></i></a>
+                                        <a {% if aplicacio.url_backend %} href="{% url aplicacio.url_backend %}" {% endif %}><i class="bi bi-gear" style="font-size: 27px;"></i></a>
                                     </div>
                                     {% endif %}
                                     <div role="button" class="col-1 me-2">
-                                        <a href="{% url aplicacio.url_acces %}"><i class="bi bi-box-arrow-in-right" style="font-size: 31px;"></i></a>
+                                        <a {% if aplicacio.url_acces  %} href="{% url aplicacio.url_acces %}" {% endif %}><i class="bi bi-box-arrow-in-right" style="font-size: 31px;"></i></a>
                                     </div>
                                 </div>
                             </div>

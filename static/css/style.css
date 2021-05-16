@@ -1,36 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.gradient{
-  background-image: -webkit-gradient(linear, left top, right bottom, from(#373737), color-stop(#575757), color-stop(#797979), color-stop(#9d9d9d), to(#c2c2c2));
-  background-image: -o-linear-gradient(left top, #373737, #575757, #797979, #9d9d9d, #c2c2c2);
-  background-image: linear-gradient(to right bottom, #373737, #575757, #797979, #9d9d9d, #c2c2c2);
-}
-.vertical-center {
-  display: flex;
-  align-items: center;
-  min-height: 70vh;
-}
-.size-form{
-  min-height: 60vh;
-}
-
-/*background color botons seminaris*/
-
-.color-boto:hover{
-  background-color: #6c757d;
-}
-/*Treure border de de tr */
-tr.noBorder td {
-  border: 0;
-}
-.active {
-  background-color: #000 !important;
-}
-
 /*wrapper Amagar sidebar*/
 
 #wrapper {
@@ -111,3 +78,25 @@ tr.noBorder td {
   }
 }
 
+/*background color botons seminaris*/
+
+.color-boto:hover{
+  background-color: #6c757d;
+}
+.colorNavLink{
+  color: white !important;
+}
+
+/*Treure border de de tr */
+tr.noBorder td {
+  border: 0;
+}
+.active {
+  background-color: #000 !important;
+}
+
+.butoDesactivat{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}

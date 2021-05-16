@@ -1,0 +1,85 @@
+/*Login*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#login {
+    width: 100%;
+    height: 100vh;
+    background: url("../../img/login-bg.png");
+    background: url("../../img/login-bg.png");
+    position: relative;
+}
+
+#login .login-contenidor {
+    position: absolute;
+    bottom: 5%;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 0 15px;
+}
+#login h1 {
+    margin: 0 0 30px 0;
+    font-size: 48px;
+    font-weight: 500;
+    line-height: 56px;
+    color: #fff;
+}
+
+#login h2 {
+    color: #aeaeae;
+    margin-bottom: 30px;
+    font-size: 14px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+#login .btn-google {
+    font-family: "Montserrat", sans-serif;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 16px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 14px 30px;
+    border-radius: 3px;
+    margin: 10px;
+    color: #fff;
+    background: #7cc576;
+}
+
+#login .btn-google:hover {
+    transition: 0.5s;
+    background: #fff;
+    color: #7cc576;
+}
+
+@media (min-width: 1024px) {
+    #login {
+        background-attachment: fixed;
+    }
+}
+
+@media (max-width: 768px) {
+    #login h1 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+        #login h2 {
+            line-height: 22px;
+    }
+}
+
+/*Gradient background grup */
+.gradient{
+    background-image: -webkit-gradient(linear, left top, right bottom, from(#373737), color-stop(#575757), color-stop(#797979), color-stop(#9d9d9d), to(#c2c2c2));
+    background-image: -o-linear-gradient(left top, #373737, #575757, #797979, #9d9d9d, #c2c2c2);
+    background-image: linear-gradient(to right bottom, #373737, #575757, #797979, #9d9d9d, #c2c2c2);
+  }

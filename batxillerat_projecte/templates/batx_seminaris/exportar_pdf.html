@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LLista alumnes i seminaris</title>
+  </head>
+  <style>
+    @page {
+        size: "A4";
+        margin: 2.0cm 3cm 3.5cm 3cm;
+    }
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 3px;
+      text-align: left;
+    }
+    #page{
+      width: 1000px;
+    }
+    </style>
+  <body>
+    <div id="page">
+      <h1>LListat Alumnat i Seminaris</h1>
+      <table id="tables">
+          <tr>
+              <th colspan="1">Nom Alunme</th>
+              <th >Seminari</th>
+          </tr>
+          {% for solicitud  in llistaSolicituds  %}
+          <tr>
+              <td colspan="1">{{solicitud.usuari.get_full_name}}</td>
+              <td>{{solicitud.seminari}}</td>
+          </tr>
+          {% endfor %}
+      </table>
+    </div>
+  </body>
+</html>

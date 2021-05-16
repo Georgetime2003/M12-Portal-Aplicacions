@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<div id="wrapper">
+  <div class="container-fluid">
+      <!-- Sidebar -->
+      <div id="sidebar-wrapper">
+          <ul class="sidebar-nav">
+              <div class="row d-flex justify-content-center">
+                  <div class="col-11">
+                      <div class="row">
+                          <div class="col-11 text-white">
+                              <ul>
+                                  <li class="colorNavLink fs-5 nav-link pt-4 ps-1 text-center colorNavModificat">Administració </br>Temes Projecte</li>
+                                  <div style="background-color:#EAEFF5;height:1px;"></div>
+                                  <li class="colorNavLink rounded nav-link mt-4 bg-secondary" role="button">
+                                    <div class="row">
+                                      <div class="col-sm-2  pt-1">
+                                        <i class="bi bi-clipboard-data me-3" style="font-size:20px;"></i>
+                                      </div>
+                                      <div class="col-sm-8 pe-2  me-4">
+                                          Assignar<br>Projecte
+                                      </div>
+                                    </div>
+                                  </li>
+                                  <li onclick = "location.href= '{% url 'batxSeminaris:manteniment-formulari' %}'" class=" colorNavLink nav-link color-boto rounded mt-1" role="button">
+                                      <div class="row">
+                                        <div class="col-sm-2 pt-1">
+                                            <i class="bi bi-gear-wide" style="font-size:20px;" ></i>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            Manteniment <br> Formulari
+                                        </div>
+                                      </div>
+                                    </li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </ul>
+      </div>
+      <!-- Page Content -->
+      <div id="page-content-wrapper" class="overflow-auto" style="height:85vh">
+          <div class="container-fluid">
+            <div class="col p-1 ps-5">
+              <div class="container p-5">
+                <div class="row py-4">
+                    <div class="col-sm-7">
+                      <h5>Llistat Alumnes</h5>
+                    </div>
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-2 pe-3">
+                        <button onclick = "location.href= '{% url 'batxSeminaris:exportar-pdf' %}'" type="button" class="btn btn-outline-secondary btn-sm">Exportar LListat</button>
+                    </div>
+                </div>
+                <div class="row g-3 align-items-center">
+                  <div class="col-auto">
+                    <label for="grup" class="col-form-label">Grup:</label>
+                  </div>
+                  <div class="col-auto">
+                    <select class="form-select" id="filter">
+                      <option selected value="Tots">---</option>
+                      {% for grup in llista_grups %}
+                        <option value="{{grup}}">{{grup}}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                  <div class="col-sm-5 ms-1"></div>
+                  <div class="col-auto">
+                    <label for="alumne" class="col-form-label">Alumne:</label>
+                  </div>
+                  <div class="col-sm-2">
+                    <input type="input" id="alumne" class="form-control">
+                  </div>
+                </div>
+                <div class="row py-2">
+                  <form id="defaults" >
+                      <input name="csrfmiddlewaretoken" type="hidden" value="{{ csrf_token }}">
+                  </form>
+                  <div class="col-md-11 py-5">
+                    <table class=" table-responsive table table-sm table-hover">
+                      <thead>            
+                        <tr>
+                            <th>Alumne</th>
+                            <th class="text-center">Primera Opció</th>
+                            <th class="text-center">Segona Opció</th>
+                            <th class="text-center">Tercera Opció</th>
+                            <th class="text-center">Plantajament</th>
+                        </tr>
+                      </thead>
+                      <tbody id="taulaSolicituds">
+                        {% for key, value in llista_solicituds %}
+                          <tr grup="{{value.0.usuari.groups.all.0}}">
+                            <td>{{value.0.usuari.get_full_name}}</td>
+                          {% for solicitud in value %}
+                                <td>
+                                  <span data-bs-toggle="popover"  
+                                        data-bs-trigger="hover" 
+                                        data-bs-placement="top"
+                                        data-bs-content="Places Disponibles: {% for places in placesDisponibles %}{% if solicitud.seminari_id == places.seminari %}{{places.num_places}}{% endif %} {% endfor %} " >
+                                    <button 
+                                      type="button" 
+                                      class="btn btn-outline-dark w-100 {% if solicitud.assignat == True %}active{% endif %}"
+                                      {% for places in placesDisponibles %}{% if solicitud.seminari_id == places.seminari %}{% if places.num_places == 0 %}disabled='disabled'{% endif %}{% endif %} {% endfor %}
+                                      usuari-id="{{solicitud.usuari_id}}" 
+                                      solicitud-id="{{solicitud.id}}"
+                                      seminari-id="{{solicitud.seminari_id}}" >{{solicitud.seminari}}</button>
+                                  </span>
+                                </td>
+                          {% endfor %}
+                              <td>
+                                <button type="button" 
+                                        class="btn btn-outline-dark w-100" 
+                                        data-bs-toggle="collapse" 
+                                        data-bs-target="#mostrar{{key}}" 
+                                        aria-controls="mostrar{{key}}">Mostrar</button>
+                              </td>
+                          </tr>
+                          <tr class="noBorder">
+                            <td colspan="5" class=" p-0">
+                              <div class="collapse" id="mostrar{{key}}">
+                                <div class="accordion" id="accordionExample">
+                                  {% for solicitud in value %}
+                                  <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingTwo">
+                                      <button class="accordion-button collapsed" 
+                                              type="button" 
+                                              data-bs-toggle="collapse" 
+                                              data-bs-target="#accordion{{key}}{{solicitud.seminari|cut:' '}}" 
+                                              aria-expanded="false" 
+                                              aria-controls="accordion{{key}}{{solicitud.seminari|cut:' '}}">
+                                        <h6>{{solicitud.seminari}}</h6>
+                                      </button>
+                                    </h2>
+                                    <div id="accordion{{key}}{{solicitud.seminari|cut:' '}}" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                      <div class="accordion-body">
+                                        {{solicitud.plantajament}}
+                                      </div>
+                                    </div>
+                                  </div>
+                                  {% endfor %}
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>   
+            </div>
+          </div>
+      </div>
+  </div>
+</div>
+{% endblock %}
+{% block extrajs %}
+  <script type="text/javascript" src="{% static 'js/batxilleratProjecte/assignarProjecte.js' %}"></script>
+{% endblock extrajs %}
