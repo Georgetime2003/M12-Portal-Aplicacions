@@ -60,7 +60,6 @@ $("button").click(function() {
             $.each( data, function( key, value ) {
               if(value.seminari == seminariId){
                 if(value.num_places == 0){
-                  button..addClass("active")
                   button.attr("disabled", true) 
                   button.popover('hide')
                 }else{
