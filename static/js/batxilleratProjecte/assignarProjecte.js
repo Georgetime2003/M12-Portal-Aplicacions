@@ -60,8 +60,11 @@ $("button").click(function() {
             $.each( data, function( key, value ) {
               if(value.seminari == seminariId){
                 if(value.num_places == 0){
-                  button.attr("disabled", true) 
+                  button.attr("disabled", true)
                   button.popover('hide')
+                  if(!button.hasClass("active")){
+                    button.addClass("butoDesactivat")
+                  }
                 }else{
                   button.removeClass("butoDesactivat")
                   button.attr("disabled", false)
@@ -76,3 +79,6 @@ $("button").click(function() {
         }
     })
 })
+document.addEventListener("DOMContentLoaded", function(){
+  
+});

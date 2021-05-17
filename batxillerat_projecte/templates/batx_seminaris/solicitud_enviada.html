@@ -3,15 +3,38 @@
 {% load static %}
 
 <div class="text-center">
-    <h1>Ja has enviat les sol·licituds del projecte</h1>
+    <h2>Ja has enviat les sol·licituds del projecte</h2>
 </div>
-<div class="row">
-    <div>
-        <ul class="list-group list-group-flush">
-            {% for solicitud  in llista_solicituds %}
-                <li class="list-group-item">Seminari: {{solicitud.seminari}}</li>
-            {% endfor %}
-        </ul>
+<div class="row justify-content-center">
+    <divc class="col-sm-8 me-5 mt-5">
+        <h4>Opcions enviades</h4>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                  <th scope="col">Opcio</th>
+                  <th scope="col">Tema Projecte</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for solicitud  in llista_solicituds %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{solicitud.seminari}}</td>
+                    </tr>
+                {% endfor %} 
+            </tbody>
+        </table>
+
+        <div class="mt-5 alert alert-dark">
+            <h4>
+            Tema assignat : 
+                {% for solicitud  in llista_solicituds %}
+                    {% if solicitud.assignat == True %}
+                        {{solicitud.seminari}} 
+                    {% endif %}
+                {% endfor %}
+            </h4>
+        </div>
     </div>
 </div>
 {% endblock%}

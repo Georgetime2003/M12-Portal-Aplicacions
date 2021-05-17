@@ -47,11 +47,11 @@
             <div class="col p-1 ps-5">
               <div class="container p-5">
                 <div class="row py-4">
-                    <div class="col-sm-7">
+                    <div class="col-sm-5">
                       <h5>Llistat Alumnes</h5>
                     </div>
-                    <div class="col-sm-1"></div>
-                    <div class="col-sm-2 pe-3">
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-2">
                         <button onclick = "location.href= '{% url 'batxSeminaris:exportar-pdf' %}'" type="button" class="btn btn-outline-secondary btn-sm">Exportar LListat</button>
                     </div>
                 </div>
@@ -59,7 +59,7 @@
                   <div class="col-auto">
                     <label for="grup" class="col-form-label">Grup:</label>
                   </div>
-                  <div class="col-auto">
+                  <div class="col-auto me-3">
                     <select class="form-select" id="filter">
                       <option selected value="Tots">---</option>
                       {% for grup in llista_grups %}
@@ -67,11 +67,11 @@
                       {% endfor %}
                     </select>
                   </div>
-                  <div class="col-sm-3 ms-1"></div>
+                  <div class="col-sm-2"></div>
                   <div class="col-auto">
                     <label for="alumne" class="col-form-label">Alumne:</label>
                   </div>
-                  <div class="col-sm-2">
+                  <div class="col-sm-3">
                     <input type="input" id="alumne" class="form-control">
                   </div>
                 </div>
