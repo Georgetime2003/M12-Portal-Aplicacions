@@ -4,7 +4,7 @@ from xhtml2pdf import pisa
 from django.contrib.auth.decorators import login_required,permission_required
 from .models import Solicitud
 
-# vista per generar un pdf amb el llistat d'alumnes i seminari assignat
+# Impresora per generar un pdf amb el llistat d'alumnes i seminari assignat
 @login_required
 @permission_required('batx_seminaris.gestio_professor',raise_exception=True)
 def render_pdf_view(request):

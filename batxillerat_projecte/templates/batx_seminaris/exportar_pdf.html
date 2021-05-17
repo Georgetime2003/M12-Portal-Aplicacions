@@ -26,12 +26,14 @@
       <table id="tables">
           <tr>
               <th colspan="1">Nom Alunme</th>
-              <th >Seminari</th>
+              <th colspan="1">Tema Assignat</th>
+              <th colspan="1">Grup</th>
           </tr>
           {% for solicitud  in llistaSolicituds  %}
           <tr>
               <td colspan="1">{{solicitud.usuari.get_full_name}}</td>
-              <td>{{solicitud.seminari}}</td>
+              <td colspan="1">{{solicitud.seminari}}</td>
+              <td colspan="1">{{solicitud.usuari.groups.all.0}}</td>
           </tr>
           {% endfor %}
       </table>
