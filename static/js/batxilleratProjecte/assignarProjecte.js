@@ -80,5 +80,11 @@ $("button").click(function() {
     })
 })
 document.addEventListener("DOMContentLoaded", function(){
-  
+  $(`button[seminari-id]`).each(function() {
+    if($(this).attr("disabled")){
+      if(!$(this).hasClass("active")){
+        $(this).addClass("butoDesactivat")
+      }
+    }
+  })
 });

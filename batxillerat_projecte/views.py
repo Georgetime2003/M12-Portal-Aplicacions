@@ -35,13 +35,13 @@ def AssignarProjecte(request):
     else:
         Solicituds = Solicitud.objects.all()
         grups= Group.objects.filter(curs=3)
-
         placesDisponibles = Solicitud.objects.values('seminari').annotate(num_places=F('seminari__places')-Count(Case(When(assignat=True, then=1))))
         solicitudsPerId={}
         # Crea objecte amb usuari id de clau i de data les seves solicituds.
         for solicitud in Solicituds:
             solicitudsPerId.setdefault(solicitud.usuari_id, []).append(solicitud)
         llistaSolicitudsId = sorted(solicitudsPerId.items())
+        
         return render(request, 'batx_seminaris/assignar_projecte.html', {'llista_solicituds': llistaSolicitudsId,'placesDisponibles':placesDisponibles,"llista_grups":grups})
 
 # Vista modal per crear departament
