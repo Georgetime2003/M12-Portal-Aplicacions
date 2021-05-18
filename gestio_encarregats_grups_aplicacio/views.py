@@ -3,7 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
 from aplicacions.models import Aplicacio
 from django.contrib.auth.models import Group , User
-from .forms import CreateMealForm
+from .forms import ModificarGrupsAplicacioForm,ModificarEncarregatsAplicacioForm
 from django.urls import reverse_lazy
 
 # Create your views here.
@@ -23,8 +23,17 @@ def AplicacioLlistatGrupsEncarregats(request,pk):
 
 
 class ModificarGrupsAplicacio(generic.UpdateView):
-    template_name = "gestio_encarregats_grups_aplicacio/modificar_grups_encarregats.html"
-    form_class = CreateMealForm
+    template_name = "gestio_encarregats_grups_aplicacio/modificar_grups_aplicacio.html"
+    form_class = ModificarGrupsAplicacioForm
+    queryset = Aplicacio.objects.all()
+
+    def get_success_url(self):
+        return reverse_lazy('gestioEncarregatsGrups:llistar-grups-encarregats', kwargs={'pk': self.kwargs['pk']})
+
+
+class ModificarEncarregatsAplicacio(generic.UpdateView):
+    template_name = "gestio_encarregats_grups_aplicacio/modificar_encarregats_aplicacio.html"
+    form_class = ModificarEncarregatsAplicacioForm
     queryset = Aplicacio.objects.all()
 
     def get_success_url(self):
