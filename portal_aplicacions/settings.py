@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     # boostrap forms
     'crispy_forms',
     'batxillerat_projecte',
+    'gestio_encarregats_grups_aplicacio',
      # Allauth login de google
     'allauth',
     'allauth.account',

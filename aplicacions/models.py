@@ -14,6 +14,7 @@ class Aplicacio(models.Model):
     llista_grups = models.ManyToManyField(Group)
     llista_encarregats = models.ManyToManyField(User,limit_choices_to={"rol__id_rol":1}) 
 
+    objects = models.Manager()
     llistatAplicacions= LListaAplicacions()
 
     class Meta:
