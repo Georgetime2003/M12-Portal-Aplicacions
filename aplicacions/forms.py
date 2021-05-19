@@ -1,6 +1,7 @@
 from django import forms
-from aplicacions.models import Aplicacio
 from django.contrib.auth.models import Group , User
+from .models import Aplicacio
+
 class ModificarGrupsAplicacioForm(forms.ModelForm):
 
     class Meta:

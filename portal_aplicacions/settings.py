@@ -28,13 +28,12 @@ INSTALLED_APPS = [
     # Sistema Aplicacions
     'autenticacio',
     'aplicacions',
-
-    # Noves aplicacions
     #'aplicacions.projecte_batxillerat',
     # boostrap forms
     'crispy_forms',
+    
+    # Noves aplicacions
     'batxillerat_projecte',
-    'gestio_encarregats_grups_aplicacio',
      # Allauth login de google
     'allauth',
     'allauth.account',

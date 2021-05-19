@@ -4,7 +4,7 @@
         <h5 class="modal-title">Modificar grups</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
-    <form action="{% url 'gestioEncarregatsGrups:modificar-grups-aplicacio' aplicacio.id %}" method="POST">
+    <form action="{% url 'aplicacions:modificar-encarregats-aplicacio' aplicacio.id %}" method="POST">
         {% csrf_token %} 
         <div class="modal-body">
             {{form}}

@@ -1,4 +1,4 @@
-{% extends "gestio_encarregats_grups_aplicacio/llista_aplicacions_grups_encarregats.html" %}
+{% extends "aplicacions/gestio_grups_encarregats/llista_aplicacions_grups_encarregats.html" %}
 {% load static %}
 {% block aplicacio %}
 <div class="d-flex justify-content-center text-center mt-3">
@@ -10,7 +10,7 @@
       <div class="card text-center">
         <div class="card-body">
           <h4>Afegir grups
-            <button onclick="obrir_modal_modificar_grups_aplicacio('{% url 'gestioEncarregatsGrups:modificar-grups-aplicacio' aplicacio.0.id %}')" 
+            <button onclick="obrir_modal_modificar_grups_aplicacio('{% url 'aplicacions:modificar-grups-aplicacio' aplicacio.0.id %}')" 
                     class="btn shadow-none p-0 pb-2 pe-2"> 
                     <i  class="bi bi-plus-square align-middle" style="font-size:15px;"></i>
             </button>
@@ -31,7 +31,7 @@
       <div class="card text-center">
         <div class="card-body">
           <h4>Afegir Encarregats
-            <button onclick="obrir_modal_modificar_encarregats_aplicacio('{% url 'gestioEncarregatsGrups:modificar-encarregats-aplicacio' aplicacio.0.id %}')" 
+            <button onclick="obrir_modal_modificar_encarregats_aplicacio('{% url 'aplicacions:modificar-encarregats-aplicacio' aplicacio.0.id %}')" 
                     class="btn shadow-none p-0 pb-2 pe-2"> 
                     <i  class="bi bi-plus-square align-middle" style="font-size:15px;"></i>
             </button>
@@ -54,5 +54,5 @@
 <div class="modal fade" tabindex="-1" id="modalModificarEncarregats" role="dialog"></div>
 {% endblock %}
 {% block extrajs %}
-  <script type="text/javascript" src="{% static 'js/gestio_encarregats_grups_aplicacio/gestio_encarregat_grups.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/aplicacions/gestio_encarregat_grups.js' %}"></script>
 {% endblock extrajs %}
