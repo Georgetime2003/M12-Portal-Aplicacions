@@ -12,6 +12,9 @@
   padding-left: 290px;
 }
 
+.color-sidebar {
+  background:#EBEBEB !important;
+}
 #sidebar-wrapper {
   position: fixed;
   left: 290px;

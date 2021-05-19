@@ -2,12 +2,12 @@
 <div id="wrapper">
     <div class="container-fluid">
         <!-- Sidebar -->
-        <div id="sidebar-wrapper">
+        <div id="sidebar-wrapper" class="color-sidebar shadow-sm">
             <ul class="sidebar-nav">
                 <div class="row d-flex justify-content-center">
                     <div class="col-11">
                         {% if llista_aplicacions %} {% for aplicacio in llista_aplicacions %}
-                        <div class="card mx-1 mt-2 rounded-2">
+                        <div class="card mx-1 mt-2 shadow  rounded-2">
                             <div class="card-body  ms-2">
                                 <h5 class="card-title">{{ aplicacio.nom }}</h5>
                                 <p class="card-text  ms-2">{{ aplicacio.descripcio }}</p>
@@ -35,7 +35,7 @@
                         {% endfor %} 
                         {% else %}
                         <div class="card mx-1 mt-2">
-                            <div class="card-body  ms-2">
+                            <div class="card-body shadow-sm ms-2">
                                 <h5 class="card-title">Aplicacions</h5>
                                 <p class="card-text ">No hi han aplicacions disponibles</p>
                             </div>
