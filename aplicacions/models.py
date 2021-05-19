@@ -11,8 +11,8 @@ class Aplicacio(models.Model):
     data_limit_fi = models.DateField()
     url_acces = models.CharField(max_length=60,blank=True)
     url_backend = models.CharField(max_length=60,blank=True)
-    llista_grups = models.ManyToManyField(Group)
-    llista_encarregats = models.ManyToManyField(User,limit_choices_to={"rol__id_rol":1}) 
+    llista_grups = models.ManyToManyField(Group,blank=True)
+    llista_encarregats = models.ManyToManyField(User,limit_choices_to={"rol__id_rol":1},blank=True) 
 
     objects = models.Manager()
     llistatAplicacions= LListaAplicacions()

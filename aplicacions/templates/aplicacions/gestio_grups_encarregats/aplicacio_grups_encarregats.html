@@ -1,12 +1,12 @@
 {% extends "aplicacions/gestio_grups_encarregats/llista_aplicacions_grups_encarregats.html" %}
 {% load static %}
 {% block aplicacio %}
-<div class="d-flex justify-content-center text-center mt-3">
-    <h3>Modificar grups i encarregats</h3>
+<div class="d-flex justify-content-center text-center mt-3 mb-3">
+    <h3>Modificar grups i encarregats <br> {{aplicacio.0.nom}} </h3>
 </div>
 <div class="container">
   <div class="row">
-    <div class="col-xxl-6 col-md-12">
+    <div class="col-xxl-6 col-md-6">
       <div class="card text-center">
         <div class="card-body">
           <h4>Afegir grups
@@ -27,7 +27,7 @@
         </div>
       </div>
     </div>
-    <div class="col-xxl-6 col-sm-12">
+    <div class="col-xxl-6 col-sm-6">
       <div class="card text-center">
         <div class="card-body">
           <h4>Afegir Encarregats
@@ -38,12 +38,21 @@
           </h4>
           <ol class="list-group list-group-numbered">
             {% for encarregat in aplicacio.0.llista_encarregats.all %}
-            <li class="list-group-item d-flex justify-content-between align-items-start">
-              <div class="ms-2 me-auto">
-                <div class="fw-bold">{{encarregat}}</div>
-              </div>
-            </li>
+              {% if encarregat %}
+              <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                  <div class="fw-bold">{{encarregat.get_full_name}}</div>
+                </div>
+              </li>
+              {% endif %}
             {% endfor %}
+            {% if not aplicacio.0.llista_encarregats.all %}
+              <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                  <div class="fw-bold">No hi han encarregats </div>
+                </div>
+              </li>
+            {% endif %}
           </ol>
         </div>
       </div>
