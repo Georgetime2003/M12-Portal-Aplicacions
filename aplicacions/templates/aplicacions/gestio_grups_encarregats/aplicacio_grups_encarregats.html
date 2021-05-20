@@ -2,63 +2,65 @@
 {% load static %}
 {% block aplicacio %}
 <div class="container">
-  <h4>Modificar grups i encarregats {{aplicacio.0.nom}} </h4>
-  <div class="row">
-    <div class="col-xxl-6 col-md-6">
-      <div class="card text-center">
-        <div class="card-body">
-          <h5>Modificar grups
-            <button onclick="obrir_modal_modificar_grups_aplicacio('{% url 'aplicacions:modificar-grups-aplicacio' aplicacio.0.id %}')" 
-                    class="btn shadow-none p-0 pb-2 pe-2"> 
-                    <i  class="bi bi-plus-square align-middle" style="font-size:15px;"></i>
-            </button>
-          </h5>
-          <ol class="list-group list-group-numbered">
-            {% for grup in aplicacio.0.llista_grups.all %}
-            <li class="list-group-item d-flex justify-content-between align-items-start">
-              <div class="ms-2 me-auto">
-                <div class="fw-bold">{{grup}}</div>
-              </div>
-            </li>
-            {% endfor %}
-            {% if not aplicacio.0.llista_grups.all %}
+  <div class="row p-1  align-items-center shadow rounded mt-2 pb-4">
+    <h4 class="p-3 text-center">Modificar grups i encarregats <br> {{aplicacio.0.nom}} </h4>
+    <div class="row">
+      <div class="col-xxl-6 col-md-6">
+        <div class="card text-center">
+          <div class="card-body">
+            <h5>Modificar grups
+              <button onclick="obrir_modal_modificar_grups_aplicacio('{% url 'aplicacions:modificar-grups-aplicacio' aplicacio.0.id %}')" 
+                      class="btn shadow-none p-0 pb-2 pe-2"> 
+                      <i  class="bi bi-plus-square align-middle" style="font-size:15px;"></i>
+              </button>
+            </h5>
+            <ol class="list-group list-group-numbered">
+              {% for grup in aplicacio.0.llista_grups.all %}
               <li class="list-group-item d-flex justify-content-between align-items-start">
                 <div class="ms-2 me-auto">
-                  <div class="fw-bold">No hi han grups assignats </div>
+                  <div class="fw-bold">{{grup}}</div>
                 </div>
               </li>
-            {% endif %}
-          </ol>
+              {% endfor %}
+              {% if not aplicacio.0.llista_grups.all %}
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                  <div class="ms-2 me-auto">
+                    <div class="fw-bold">No hi han grups assignats </div>
+                  </div>
+                </li>
+              {% endif %}
+            </ol>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-xxl-6 col-sm-6">
-      <div class="card text-center">
-        <div class="card-body">
-          <h5>Modificar Encarregats
-            <button onclick="obrir_modal_modificar_encarregats_aplicacio('{% url 'aplicacions:modificar-encarregats-aplicacio' aplicacio.0.id %}')" 
-                    class="btn shadow-none p-0 pb-2 pe-2"> 
-                    <i  class="bi bi-plus-square align-middle" style="font-size:15px;"></i>
-            </button>
-          </h5>
-          <ol class="list-group list-group-numbered">
-            {% for encarregat in aplicacio.0.llista_encarregats.all %}
-              {% if encarregat %}
-              <li class="list-group-item d-flex justify-content-between align-items-start">
-                <div class="ms-2 me-auto">
-                  <div class="fw-bold">{{encarregat.get_full_name}}</div>
-                </div>
-              </li>
+      <div class="col-xxl-6 col-sm-6">
+        <div class="card text-center">
+          <div class="card-body">
+            <h5>Modificar Encarregats
+              <button onclick="obrir_modal_modificar_encarregats_aplicacio('{% url 'aplicacions:modificar-encarregats-aplicacio' aplicacio.0.id %}')" 
+                      class="btn shadow-none p-0 pb-2 pe-2"> 
+                      <i  class="bi bi-plus-square align-middle" style="font-size:15px;"></i>
+              </button>
+            </h5>
+            <ol class="list-group list-group-numbered">
+              {% for encarregat in aplicacio.0.llista_encarregats.all %}
+                {% if encarregat %}
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                  <div class="ms-2 me-auto">
+                    <div class="fw-bold">{{encarregat.get_full_name}}</div>
+                  </div>
+                </li>
+                {% endif %}
+              {% endfor %}
+              {% if not aplicacio.0.llista_encarregats.all %}
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                  <div class="ms-2 me-auto">
+                    <div class="fw-bold">No hi han encarregats </div>
+                  </div>
+                </li>
               {% endif %}
-            {% endfor %}
-            {% if not aplicacio.0.llista_encarregats.all %}
-              <li class="list-group-item d-flex justify-content-between align-items-start">
-                <div class="ms-2 me-auto">
-                  <div class="fw-bold">No hi han encarregats </div>
-                </div>
-              </li>
-            {% endif %}
-          </ol>
+            </ol>
+          </div>
         </div>
       </div>
     </div>

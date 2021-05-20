@@ -1,29 +1,28 @@
 {% extends "aplicacions/llistar_aplicacions.html" %}
 {% block aplicacio %}
 {% load static %}
-<div class="row justify-content-center">
-    <divc class="col-sm-8 me-5 mt-5">
-        <h3 class="pb-2">Opcions enviades</h3>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                  <th scope="col">Opcio</th>
-                  <th scope="col">Tema Projecte</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for solicitud  in llista_solicituds %}
+<div class="container">
+    <div class="row align-items-center shadow rounded mt-2">
+        <h3 class="text-center p-3">Temes Sol·licitats</h3>
+        <div class="col-10 ms-5">
+            <table class="table table-striped">
+                <thead>
                     <tr>
-                        <td>{{ forloop.counter }}</td>
-                        <td>{{solicitud.seminari}}</td>
+                        <th scope="col">Opcio</th>
+                        <th scope="col">Tema Projecte</th>
                     </tr>
-                {% endfor %} 
-            </tbody>
-        </table>
-
-        <div class="mt-5">
-            <h4>
-            Tema assignat : 
+                </thead>
+                <tbody>
+                    {% for solicitud  in llista_solicituds %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{solicitud.seminari}}</td>
+                        </tr>
+                    {% endfor %} 
+                </tbody>
+            </table>
+            <h4 class="mt-5 pb-3 mb-4">
+                Tema assignat : 
                 {% for solicitud  in llista_solicituds %}
                     {% if solicitud.assignat == True %}
                         {{solicitud.seminari}} 

@@ -45,10 +45,10 @@
       <div id="page-content-wrapper" class="overflow-auto" style="height:85vh">
           <div class="container-fluid">
             <div class="col p-1 ps-5">
-              <div class="container p-5">
+              <div class="container p-2">
                 <div class="row py-4">
                     <div class="col-sm-5">
-                      <h5>Llistat Alumnes</h5>
+                      <h5>Llistat Sol·licituds</h5>
                     </div>
                     <div class="col-sm-4"></div>
                     <div class="col-sm-2">
@@ -93,7 +93,7 @@
                         {% for key, value in llista_solicituds %}
                           <tr grup="{{value.0.usuari.groups.all.0}}">
                             <td>{{value.0.usuari.get_full_name}}</td>
-                          {% for solicitud in value %}
+                              {% for solicitud in value %}
                                 <td>
                                   <span data-bs-toggle="popover"  
                                         data-bs-trigger="hover" 
@@ -108,7 +108,7 @@
                                       seminari-id="{{solicitud.seminari_id}}" >{{solicitud.seminari}}</button>
                                   </span>
                                 </td>
-                          {% endfor %}
+                              {% endfor %}
                               <td>
                                 <button type="button" 
                                         class="btn btn-outline-dark w-100" 

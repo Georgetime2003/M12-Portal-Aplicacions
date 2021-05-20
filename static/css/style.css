@@ -33,6 +33,7 @@
 
 #wrapper.toggled #sidebar-wrapper {
   width: 290px;
+  
 }
 
 #page-content-wrapper {
@@ -44,6 +45,8 @@
   position: absolute;
   margin-right: -290px;
 }
+
+/*Format icones */
 #gestioGrupsIcon{
   position: absolute;
   left: 80%;
