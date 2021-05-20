@@ -1,5 +1,4 @@
 /*wrapper Amagar sidebar*/
-
 #wrapper {
   padding-left: 0;
   -webkit-transition: all 0.5s ease;
@@ -16,6 +15,8 @@
   background:#EBEBEB !important;
 }
 #sidebar-wrapper {
+  overflow-y: scroll;
+  overflow-x: hidden;
   position: fixed;
   left: 290px;
   z-index: 1000;
@@ -43,7 +44,19 @@
   position: absolute;
   margin-right: -290px;
 }
-
+#gestioGrupsIcon{
+  position: absolute;
+  left: 80%;
+  top: 0;
+  transform: translate(30%, 10%);
+}
+.icones-color{
+  color:#464033;
+}
+.icones-color:hover {
+  color: rgb(23, 23, 218);
+  transform: scale(5)
+}
 
 .sidebar-nav {
   position: absolute;
@@ -95,10 +108,32 @@ tr.noBorder td {
   border: 0;
 }
 .active {
-  background-color: #000 !important;
+  background-color: #3b362f !important;
+  color:white !important;
 }
 
 .butoDesactivat{
-  background-color: #995e5e !important;
+  background-color: #bf4552 !important;
   color: #ffffff !important;
+}
+
+/*Login*/
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background: #c2c9d2;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
 }

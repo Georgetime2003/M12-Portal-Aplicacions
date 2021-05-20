@@ -9,20 +9,11 @@ from django.contrib.auth.models import Group , User
 class AplicacioLlistatView(LoginRequiredMixin, generic.ListView):
     template_name = "aplicacions/llistar_aplicacions.html"
     context_object_name = "llista_aplicacions"
-    context_object_name = "llista_aplicacions"
 
     def get_queryset(self):
        aplicacions =  Aplicacio.llistatAplicacions.per_usuari(self.request.user)
        return aplicacions
 
-
-class AplicacioGestioLlistatView(LoginRequiredMixin, generic.ListView):
-    template_name = "aplicacions/gestio_grups_encarregats/llista_aplicacions_grups_encarregats.html"
-    context_object_name = "llista_aplicacions"
-
-    def get_queryset(self):
-       aplicacions =  Aplicacio.llistatAplicacions.per_usuari(self.request.user)
-       return aplicacions
 
 def AplicacioLlistatGrupsEncarregats(request,pk):
     aplicacions =  Aplicacio.llistatAplicacions.per_usuari(request.user)

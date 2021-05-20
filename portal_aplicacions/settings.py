@@ -25,6 +25,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
     # Sistema Aplicacions
     'autenticacio',
     'aplicacions',
@@ -35,10 +39,6 @@ INSTALLED_APPS = [
     # Noves aplicacions
     'batxillerat_projecte',
      # Allauth login de google
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
 ]
 
 SITE_ID = 1

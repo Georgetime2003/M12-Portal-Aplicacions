@@ -2,32 +2,38 @@
 <div id="wrapper">
     <div class="container-fluid">
         <!-- Sidebar -->
-        <div id="sidebar-wrapper" class="color-sidebar shadow-sm">
-            <ul class="sidebar-nav">
+        <div id="sidebar-wrapper" class="color-sidebar shadow-sm" style="height:90vh">
+            <ul class="sidebar-nav ">
                 <div class="row d-flex justify-content-center">
                     <div class="col-11">
                         {% if llista_aplicacions %} {% for aplicacio in llista_aplicacions %}
                         <div class="card mx-1 mt-2 shadow  rounded-2">
+                            {% if user.rol.rol == 1 or user.is_staff %}
+                            <div id="gestioGrupsIcon"  role="button">
+                                <a href="{% url 'aplicacions:llistar-grups-encarregats' aplicacio.id %}"><i class="icones-color bi bi-people" style="font-size: 27px;"></i></a>
+                            </div>
+                            {% endif %}
                             <div class="card-body  ms-2">
-                                <h5 class="card-title">{{ aplicacio.nom }}</h5>
-                                <p class="card-text  ms-2">{{ aplicacio.descripcio }}</p>
+                                <h5 class="card-title ">{{ aplicacio.nom }}</h5>
+                                <p class="card-text">{{ aplicacio.descripcio }}</p>
+                                
                                 <div class="row">
-                                    <div class="col-1  ms-1 me-1 mt-1 ">
+                                    <div class="col-1  me-1 mt-1 ">
                                         <i class="bi bi-clock-history fa-9x" style="font-size: 20px;"></i>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-md-auto">
                                         <small>
                                             Disponible fins
                                             <p>{{ aplicacio.data_limit_fi | date:'d-m-Y' }}</p>
                                         </small>
                                     </div>
                                     {% if user.rol.rol == 1 or user.is_staff %}
-                                    <div role="button" class="col-1 me-2 mt-1">
-                                        <a {% if aplicacio.url_backend %} href="{% url aplicacio.url_backend %}" {% endif %}><i class="bi bi-gear" style="font-size: 27px;"></i></a>
+                                    <div role="button" class="col-1 mt-1">
+                                        <a {% if aplicacio.url_backend %} href="{% url aplicacio.url_backend %}" {% endif %}><i class="icones-color bi bi-gear" style="font-size: 27px;"></i></a>
                                     </div>
                                     {% endif %}
-                                    <div role="button" class="col-1 me-2">
-                                        <a {% if aplicacio.url_acces  %} href="{% url aplicacio.url_acces %}" {% endif %}><i class="bi bi-box-arrow-in-right" style="font-size: 31px;"></i></a>
+                                    <div role="button" class="col-1 ms-2">
+                                        <a {% if aplicacio.url_acces  %} href="{% url aplicacio.url_acces %}" {% endif %}><i class="icones-color bi bi-box-arrow-in-right" style="font-size: 31px;"></i></a>
                                     </div>
                                 </div>
                             </div>

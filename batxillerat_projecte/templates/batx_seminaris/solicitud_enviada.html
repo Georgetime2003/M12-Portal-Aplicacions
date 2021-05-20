@@ -1,13 +1,9 @@
 {% extends "aplicacions/llistar_aplicacions.html" %}
 {% block aplicacio %}
 {% load static %}
-
-<div class="text-center">
-    <h2>Ja has enviat les sol·licituds del projecte</h2>
-</div>
 <div class="row justify-content-center">
     <divc class="col-sm-8 me-5 mt-5">
-        <h4>Opcions enviades</h4>
+        <h3 class="pb-2">Opcions enviades</h3>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -25,7 +21,7 @@
             </tbody>
         </table>
 
-        <div class="mt-5 alert alert-dark">
+        <div class="mt-5">
             <h4>
             Tema assignat : 
                 {% for solicitud  in llista_solicituds %}

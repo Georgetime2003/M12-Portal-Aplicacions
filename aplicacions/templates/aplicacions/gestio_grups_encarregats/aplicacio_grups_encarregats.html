@@ -1,20 +1,18 @@
-{% extends "aplicacions/gestio_grups_encarregats/llista_aplicacions_grups_encarregats.html" %}
+{% extends "aplicacions/llistar_aplicacions.html" %}
 {% load static %}
 {% block aplicacio %}
-<div class="d-flex justify-content-center text-center mt-3 mb-3">
-    <h3>Modificar grups i encarregats <br> {{aplicacio.0.nom}} </h3>
-</div>
 <div class="container">
+  <h4>Modificar grups i encarregats {{aplicacio.0.nom}} </h4>
   <div class="row">
     <div class="col-xxl-6 col-md-6">
       <div class="card text-center">
         <div class="card-body">
-          <h4>Afegir grups
+          <h5>Modificar grups
             <button onclick="obrir_modal_modificar_grups_aplicacio('{% url 'aplicacions:modificar-grups-aplicacio' aplicacio.0.id %}')" 
                     class="btn shadow-none p-0 pb-2 pe-2"> 
                     <i  class="bi bi-plus-square align-middle" style="font-size:15px;"></i>
             </button>
-          </h4>
+          </h5>
           <ol class="list-group list-group-numbered">
             {% for grup in aplicacio.0.llista_grups.all %}
             <li class="list-group-item d-flex justify-content-between align-items-start">
@@ -37,12 +35,12 @@
     <div class="col-xxl-6 col-sm-6">
       <div class="card text-center">
         <div class="card-body">
-          <h4>Afegir Encarregats
+          <h5>Modificar Encarregats
             <button onclick="obrir_modal_modificar_encarregats_aplicacio('{% url 'aplicacions:modificar-encarregats-aplicacio' aplicacio.0.id %}')" 
                     class="btn shadow-none p-0 pb-2 pe-2"> 
                     <i  class="bi bi-plus-square align-middle" style="font-size:15px;"></i>
             </button>
-          </h4>
+          </h5>
           <ol class="list-group list-group-numbered">
             {% for encarregat in aplicacio.0.llista_encarregats.all %}
               {% if encarregat %}

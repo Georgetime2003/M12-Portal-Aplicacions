@@ -55,24 +55,23 @@
                         <button onclick = "location.href= '{% url 'batxSeminaris:exportar-pdf' %}'" type="button" class="btn btn-outline-secondary btn-sm">Exportar LListat</button>
                     </div>
                 </div>
-                <div class="row g-3 align-items-center">
+                <div class="row d-flex justify-content-between">
                   <div class="col-auto">
                     <label for="grup" class="col-form-label">Grup:</label>
+                    <div>
+                      <select class="form-select" id="filter">
+                        <option selected value="Tots">---</option>
+                        {% for grup in llista_grups %}
+                          <option value="{{grup}}">{{grup}}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
                   </div>
-                  <div class="col-auto me-3">
-                    <select class="form-select" id="filter">
-                      <option selected value="Tots">---</option>
-                      {% for grup in llista_grups %}
-                        <option value="{{grup}}">{{grup}}</option>
-                      {% endfor %}
-                    </select>
-                  </div>
-                  <div class="col-sm-2"></div>
-                  <div class="col-auto">
+                  <div class="col-sm-4">
                     <label for="alumne" class="col-form-label">Alumne:</label>
-                  </div>
-                  <div class="col-sm-3">
-                    <input type="input" id="alumne" class="form-control">
+                    <div class="col-md-9">
+                      <input type="input" id="alumne" class="form-control">
+                    </div>
                   </div>
                 </div>
                 <div class="row py-2">
