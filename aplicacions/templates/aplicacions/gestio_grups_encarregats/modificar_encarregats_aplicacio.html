@@ -7,6 +7,15 @@
     <form action="{% url 'aplicacions:modificar-encarregats-aplicacio' aplicacio.id %}" method="POST">
         {% csrf_token %} 
         <div class="modal-body">
+            <div class="row g-3 align-items-center mb-2">
+                <div class="col-auto">
+                  <label for="encarregat" class="col-form-label">Encarregat:</label>
+                </div>
+                <div class="col-auto">
+                  <input type="text" id="encarregat" class="form-control">
+                </div>
+            </div>
+            <hr>
             {{form}}
         </div>
         <div class="modal-footer">
