@@ -1,0 +1,1 @@
+web: gunicorn portal_aplicacions.wsgi --log-file -
