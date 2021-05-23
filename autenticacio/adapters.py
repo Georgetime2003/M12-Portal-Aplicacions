@@ -33,10 +33,7 @@ class AdapterCustom(DefaultAccountAdapter):
     # Si l'usuari es professor a aplicacions
     def get_login_redirect_url(self, request):
         grups = request.user.groups.all()
-        if request.user.is_staff:
-            path = "/aplicacions/"
-            return path
-        if request.user.rol.id_rol == 1: 
+        if request.user.is_staff or request.user.rol.id_rol == 1 :
             path = "/aplicacions/"
             return path
             
