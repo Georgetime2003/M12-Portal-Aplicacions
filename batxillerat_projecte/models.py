@@ -7,12 +7,6 @@ class Departament(models.Model):
     def __str__(self):
         return self.nom
 
-    class Meta:
-        permissions = (
-            ("gestio_professor", "Pot mantenir formulari i assignar projecte"),
-        )
-    
-
 class Seminari(models.Model):
     nom = models.CharField(max_length=100)
     departament = models.ForeignKey(Departament, on_delete=models.CASCADE)
