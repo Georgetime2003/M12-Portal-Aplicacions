@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,8 +6,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Error 403</title>
+    <link rel="stylesheet" href="{% static 'dist/css/bootstrap.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
 </head>
-<body>
-    <h1>Error 403</h1>
-  </body>
+<body class="bg-dark text-white ">
+    <div class="container d-flex align-items-center justify-content-center" style="margin-top: 10%;">
+        <div class="row">
+            <div class="col-md-2 text-center">
+                <p><i class="fa fa-exclamation-triangle fa-5x"></i><br/>Status Code: 403</p>
+            </div>
+            <div class="col-md-10 pe-1">
+                <h3>OPPSSS!!!! Perdona...</h3>
+                <p>Perdona, s'ha denegat l'acces per motius de seguretat del nostre servidor.<br/>Torneu a la pàgina anterior per continuar navegant.</p>
+                <a class="btn btn-danger" href="javascript:history.back()">Anar Enrere</a>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'dist/js/bootstrap.js' %}"></script>
+</body>
 </html>

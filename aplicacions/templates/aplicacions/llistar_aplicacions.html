@@ -8,7 +8,7 @@
                     <div class="col-11">
                         {% if llista_aplicacions %} {% for aplicacio in llista_aplicacions %}
                         <div class="card mx-1 mt-2 shadow  rounded-2">
-                            {% if user.rol.rol == 1 or user.is_staff %}
+                            {% if user.rol.id_rol == 1 or user.is_staff %}
                             <div id="gestioGrupsIcon"  role="button">
                                 <a href="{% url 'aplicacions:llistar-grups-encarregats' aplicacio.id %}"><i class="icones-color bi bi-people" style="font-size: 27px;"></i></a>
                             </div>
@@ -27,7 +27,7 @@
                                             <p>{{ aplicacio.data_limit_fi | date:'d-m-Y' }}</p>
                                         </small>
                                     </div>
-                                    {% if user.rol.rol == 1 or user.is_staff %}
+                                    {% if user.rol.id_rol == 1 or user.is_staff %}
                                     <div role="button" class="col-1 mt-1">
                                         <a {% if aplicacio.url_backend %} href="{% url aplicacio.url_backend %}" {% endif %}><i class="icones-color bi bi-gear" style="font-size: 27px;"></i></a>
                                     </div>

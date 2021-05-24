@@ -4,7 +4,8 @@ from django.views import generic
 from django.urls import reverse_lazy
 from .models import Aplicacio
 from .forms import ModificarGrupsAplicacioForm,ModificarEncarregatsAplicacioForm
-from django.contrib.auth.models import Group , User
+from django.utils.decorators import method_decorator
+from .decorators import professor_encarregat
 
 class AplicacioLlistatView(LoginRequiredMixin, generic.ListView):
     template_name = "aplicacions/llistar_aplicacions.html"
@@ -14,8 +15,9 @@ class AplicacioLlistatView(LoginRequiredMixin, generic.ListView):
        aplicacions =  Aplicacio.llistatAplicacions.per_usuari(self.request.user)
        return aplicacions
 
-
+@professor_encarregat
 def AplicacioLlistatGrupsEncarregats(request,pk):
+
     aplicacions =  Aplicacio.llistatAplicacions.per_usuari(request.user)
     aplicacio =  Aplicacio.objects.filter(pk=pk)
     return render(request, 'aplicacions/gestio_grups_encarregats/aplicacio_grups_encarregats.html', {'llista_aplicacions': aplicacions,"aplicacio":aplicacio})
@@ -23,6 +25,11 @@ def AplicacioLlistatGrupsEncarregats(request,pk):
 
 
 class ModificarGrupsAplicacio(generic.UpdateView):
+
+    @method_decorator(professor_encarregat)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
     template_name = "aplicacions/gestio_grups_encarregats/modificar_grups_aplicacio.html"
     form_class = ModificarGrupsAplicacioForm
     queryset = Aplicacio.objects.all()
@@ -32,6 +39,11 @@ class ModificarGrupsAplicacio(generic.UpdateView):
 
 
 class ModificarEncarregatsAplicacio(generic.UpdateView):
+    
+    @method_decorator(professor_encarregat)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+        
     template_name = "aplicacions/gestio_grups_encarregats/modificar_encarregats_aplicacio.html"
     form_class = ModificarEncarregatsAplicacioForm
     queryset = Aplicacio.objects.all()

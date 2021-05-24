@@ -29,3 +29,7 @@ Es pot generar un nou administrador amb `python createsuperuser`.
 * [django-Allauth](https://django-allauth.readthedocs.io/en/latest/overview.html) - Mètode per permetre l'autenticació desde serveis socials(google,github,etc..)
 * [crispy-form](https://django-crispy-forms.readthedocs.io/en/latest/) - Permet afegir format als formularis de django.
 * [xhtml2pdf](https://xhtml2pdf.readthedocs.io/en/latest/) - Permet generar fitxers pdf a partir de plantilles html.
+
+## Wiki 📖
+
+Pots trobar més informació d'aquest projecte a la [Wiki](https://github.com/davidruiztornes/M12-Portal-Aplicacions/wiki)

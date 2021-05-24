@@ -21,14 +21,16 @@
                     {% endfor %} 
                 </tbody>
             </table>
-            <h4 class="mt-5 pb-3 mb-4">
-                Tema assignat : 
+            <div class="d-flex flex-nowrap mt-5 pb-3 mb-4 align-items-center p-2 mb-5">
+                <h4>Tema assignat : </h4>
+                <h5 class="ms-4 pt-1">
                 {% for solicitud  in llista_solicituds %}
                     {% if solicitud.assignat == True %}
                         {{solicitud.seminari}} 
                     {% endif %}
                 {% endfor %}
-            </h4>
+                </h5>
+            </div>
         </div>
     </div>
 </div>
