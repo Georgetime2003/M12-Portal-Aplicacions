@@ -1,4 +1,3 @@
-wiki_captures/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -135,3 +134,7 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+wiki_captures/nova-app-admin-1.PNG
+wiki_captures/nova-app-admin-2.PNG
+wiki_captures/urls-nova-app.PNG
+wiki_captures/urls-principal.PNG
