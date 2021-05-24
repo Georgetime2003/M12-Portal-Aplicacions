@@ -14,10 +14,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['portalsapalomera.herokuapp.com','127.0.0.1']
 
-
-# Application definition
-
-INSTALLED_APPS = [
+DEFAULT_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -25,29 +22,34 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+]
 
+THIRD_PARTY_APPS = [
+    # Allauth login de google
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    # Sistema Aplicacions
+    # Boostrap forms
+    'crispy_forms',
+]
+
+LOCAL_APPS =[
+    # Apps de login i aplicacions
     'autenticacio',
     'aplicacions',
-    #'aplicacions.projecte_batxillerat',
-    # boostrap forms
-    'crispy_forms',
-    
-    # Noves aplicacions
+    # App projecte Batxillerat
     'batxillerat_projecte',
-     # Allauth login de google
 ]
+
+# Application definition
+INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
-
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
