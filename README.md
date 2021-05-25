@@ -1,5 +1,7 @@
 # Projecte M12 - Portal Aplicacions
 
+
+
 ## Instal·lació
 Clonar el repositori amb `git clone https://github.com/davidruiztornes/M12-Portal-Aplicacions.git `.\
 Crear un entorn virtual amb virtualenv `virtualenv env`.\
