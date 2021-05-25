@@ -22,10 +22,6 @@ class Solicitud(models.Model):
     usuari = models.ForeignKey(User, on_delete=models.CASCADE)
     assignat = models.BooleanField(default=False)
 
-    class Meta:
-        permissions = (
-            ("enviar_solicitud", "Pot enviar Solicitud"),
-        )
     
 
 
