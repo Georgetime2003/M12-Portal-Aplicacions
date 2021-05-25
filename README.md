@@ -31,6 +31,7 @@ Es pot generar un nou administrador amb `python createsuperuser`.
  * [Heroku](https://id.heroku.com/) - Heroku és una plataforma com a servei (PaaS) que permet als desenvolupadors construir, executar i operar aplicacions completament al núvol.
 > #### Paquets 
 * [gunicorn](https://gunicorn.org/) - Gunicorn 'Green Unicorn' és un servidor HTTP Python WSGI per a UNIX
+* [WhiteNoise](http://whitenoise.evans.io/en/stable/) - WhiteNoise permet que la una aplicació web serveixi els seus propis arxius estàtics.
 
 Url desplagament: https://portalsapalomera.herokuapp.com/
 
