@@ -1,6 +1,7 @@
 from django.core.exceptions import PermissionDenied
 from aplicacions.models import Aplicacio
 
+# Decorator que comprova si l'usuari es un dels encarregats de l'aplicacio
 def professor_encarregat(view_func):
     def func(request, *args, **kwargs):
         aplicacio = Aplicacio.objects.filter(pk=kwargs['pk'])

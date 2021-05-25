@@ -1,7 +1,7 @@
 from django import forms
 from .models import Departament, Seminari
 
-
+# Formulari per  afegir departaments
 class DepartamentForm(forms.ModelForm):
 
     class Meta:
@@ -12,7 +12,7 @@ class DepartamentForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.fields['nom'].widget.attrs.update({'class': 'form-control'})
 
-
+# Formulari per  afegir seminaris
 class SeminariForm(forms.ModelForm):
 
     class Meta:
@@ -26,6 +26,7 @@ class SeminariForm(forms.ModelForm):
         self.fields['departament'].widget.attrs.update({'id': 'departamentId','class':'d-none'})
         self.fields['departament'].label = False
 
+# Formulari per modificar seminaris
 class ModificarSeminariForm(forms.ModelForm):
 
     class Meta:

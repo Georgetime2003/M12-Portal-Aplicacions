@@ -1,12 +1,13 @@
 from django.http import HttpResponse
 from django.template.loader import get_template
 from xhtml2pdf import pisa
-from django.contrib.auth.decorators import login_required,permission_required
+from django.contrib.auth.decorators import login_required
+from .decorators import professor_encarregat
 from .models import Solicitud
 
 # Impresora per generar un pdf amb el llistat d'alumnes i seminari assignat
 @login_required
-@permission_required('batx_seminaris.gestio_professor',raise_exception=True)
+@professor_encarregat
 def render_pdf_view(request):
     template_path = 'batx_seminaris/exportar_pdf.html'
     llistaSolicituds =  Solicitud.objects.filter(assignat=True)
@@ -20,5 +21,5 @@ def render_pdf_view(request):
     pisa_status = pisa.CreatePDF(html, dest=response)
     # if error then show some funy view
     if pisa_status.err:
-       return HttpResponse('We had some errors <pre>' + html + '</pre>')
+       return HttpResponse('Error amb la impressora pdf <pre>' + html + '</pre>')
     return response

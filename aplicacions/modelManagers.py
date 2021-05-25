@@ -1,6 +1,7 @@
 from django.db import models
 from datetime import date
 
+# Query que retorna les aplicacions que tenen acces els uauaris.
 class LListaAplicacions(models.Manager): 
     def per_usuari(self, user):
         today = date.today()

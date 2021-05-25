@@ -1,6 +1,8 @@
-from django.http import HttpResponseForbidden
 from django.core.exceptions import PermissionDenied
 from aplicacions.models import Aplicacio
+# Decorator que comproba si l'usuari es troba en la llista d'encarregats de 
+# l'aplicacio batxillerat_projecte
+
 def professor_encarregat(view_func):
     aplicacio = Aplicacio.objects.filter(pk=1)
     llistaEncarregats = aplicacio[0].llista_encarregats.all()

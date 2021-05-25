@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from django.views import generic
 from django.urls import reverse_lazy
 from .models import Aplicacio
@@ -7,6 +8,7 @@ from .forms import ModificarGrupsAplicacioForm,ModificarEncarregatsAplicacioForm
 from django.utils.decorators import method_decorator
 from .decorators import professor_encarregat
 
+# View que mostra les aplicacions als usuaris
 class AplicacioLlistatView(LoginRequiredMixin, generic.ListView):
     template_name = "aplicacions/llistar_aplicacions.html"
     context_object_name = "llista_aplicacions"
@@ -15,6 +17,8 @@ class AplicacioLlistatView(LoginRequiredMixin, generic.ListView):
        aplicacions =  Aplicacio.llistatAplicacions.per_usuari(self.request.user)
        return aplicacions
 
+# View que mostra ens encarregats i els grups d'una aplicació
+@login_required
 @professor_encarregat
 def AplicacioLlistatGrupsEncarregats(request,pk):
 
@@ -23,8 +27,8 @@ def AplicacioLlistatGrupsEncarregats(request,pk):
     return render(request, 'aplicacions/gestio_grups_encarregats/aplicacio_grups_encarregats.html', {'llista_aplicacions': aplicacions,"aplicacio":aplicacio})
 
 
-
-class ModificarGrupsAplicacio(generic.UpdateView):
+# View per modificar els grups d'una aplicació
+class ModificarGrupsAplicacio(LoginRequiredMixin,generic.UpdateView):
 
     @method_decorator(professor_encarregat)
     def dispatch(self, request, *args, **kwargs):
@@ -37,8 +41,8 @@ class ModificarGrupsAplicacio(generic.UpdateView):
     def get_success_url(self):
         return reverse_lazy('aplicacions:llistar-grups-encarregats', kwargs={'pk': self.kwargs['pk']})
 
-
-class ModificarEncarregatsAplicacio(generic.UpdateView):
+# View per modificar els encarregats d'una aplicació
+class ModificarEncarregatsAplicacio(LoginRequiredMixin,generic.UpdateView):
     
     @method_decorator(professor_encarregat)
     def dispatch(self, request, *args, **kwargs):

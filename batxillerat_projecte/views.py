@@ -119,7 +119,6 @@ class EliminarSeminari(LoginRequiredMixin, generic.DeleteView):
 
 # View pagina principal solicitud
 @login_required
-#@permission_required("batx_seminaris.enviar_solicitud",raise_exception=True)
 def EnviarSolicitud(request):
     if request.method == 'POST':
         user = request.user
