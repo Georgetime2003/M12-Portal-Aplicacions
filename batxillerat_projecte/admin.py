@@ -6,7 +6,7 @@ admin.site.register(Departament)
 
 @admin.register(Seminari)
 class SeminariAdmin(admin.ModelAdmin):
-    list_display = ['nom', 'places']
+    list_display = ['id','nom', 'places']
 
 @admin.register(Solicitud)
 class SolicitudAdmin(admin.ModelAdmin):

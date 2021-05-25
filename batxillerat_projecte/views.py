@@ -11,7 +11,7 @@ from .models import Departament, Seminari, Solicitud
 from .forms import DepartamentForm, SeminariForm,ModificarSeminariForm
 from django.shortcuts import get_object_or_404
 from django.utils.decorators import method_decorator
-from .decorators import professor_encarregat
+from .decorators import professor_encarregat,usuari_grup_aplicacio
 # Vista d'acces al manteniment del formulari
 class MantenimentFormulari(LoginRequiredMixin, generic.ListView):
 
@@ -119,6 +119,7 @@ class EliminarSeminari(LoginRequiredMixin, generic.DeleteView):
 
 # View pagina principal solicitud
 @login_required
+@usuari_grup_aplicacio
 def EnviarSolicitud(request):
     if request.method == 'POST':
         user = request.user

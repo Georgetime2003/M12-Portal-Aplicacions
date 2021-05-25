@@ -13,3 +13,13 @@ def professor_encarregat(view_func):
         else:
             raise PermissionDenied
     return func
+
+def usuari_grup_aplicacio(view_func):
+    aplicacio = Aplicacio.objects.filter(pk=1)
+    llistaGrups = aplicacio[0].llista_grups.all()
+    def func(request, *args, **kwargs):
+        if request.user.groups.first() in llistaGrups or request.user.is_staff:
+            return view_func(request, *args, **kwargs)
+        else:
+            raise PermissionDenied
+    return func
