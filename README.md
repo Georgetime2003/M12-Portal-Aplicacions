@@ -1,8 +1,5 @@
 # Projecte M12 - Portal Aplicacions
 
-
-
-
 ## Instal·lació
 Clonar el repositori amb `git clone https://github.com/davidruiztornes/M12-Portal-Aplicacions.git `.\
 Crear un entorn virtual amb virtualenv `virtualenv env`.\
@@ -30,7 +27,7 @@ Es pot generar un nou administrador amb `python createsuperuser`.
 * [crispy-form](https://django-crispy-forms.readthedocs.io/en/latest/) - Permet afegir format als formularis de django.
 * [xhtml2pdf](https://xhtml2pdf.readthedocs.io/en/latest/) - Permet generar fitxers pdf a partir de plantilles html.
 
-## Desplegament :
+## Desplegament amb 🚀
  * [Heroku](https://id.heroku.com/) - Heroku és una plataforma com a servei (PaaS) que permet als desenvolupadors construir, executar i operar aplicacions completament al núvol.
 > #### Paquets 
 * [gunicorn](https://gunicorn.org/) - Gunicorn 'Green Unicorn' és un servidor HTTP Python WSGI per a UNIX
