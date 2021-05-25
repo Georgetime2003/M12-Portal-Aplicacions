@@ -91,9 +91,8 @@ DATABASES = {
 
 import dj_database_url
 
-DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
-DATABASES['default'] = dj_database_url.config(default='postgres://iyvjauwjsjriou:b4e62eb0fa2acaaab6661947e2d95154b224afedf73c65612ad4082151ff3032@ec2-34-247-118-233.eu-west-1.compute.amazonaws.com:5432/d7l9bcbkp81pdb'}
-
+db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
+DATABASES['default'].update(db_from_env)
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
