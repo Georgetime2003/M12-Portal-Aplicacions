@@ -35,7 +35,7 @@ THIRD_PARTY_APPS = [
 ]
 
 LOCAL_APPS =[
-    # Apps de login i aplicacions
+    # Apps de sistema login i aplicacions
     'autenticacio',
     'aplicacions',
     # App projecte Batxillerat
