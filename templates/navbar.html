@@ -12,6 +12,13 @@
             <i class=" bi bi-person-circle text-white" style="font-size: 25px;"></i>
           </a>
           <ul class="dropdown-menu dropdown-menu-xl-end" aria-labelledby="dropdownMenuLink">
+            {% if user.rol.id_rol == 1 or user.is_staff %}
+            <li>
+              <button class="dropdown-item" onclick ="location.href='/'">
+                Aplicacions
+              </button>
+            </li>
+            {% endif %}
             <li>
               <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#tancarSeccio">
                 Tancar Secció
