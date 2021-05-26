@@ -33,7 +33,9 @@ Es pot generar un nou administrador amb `python createsuperuser`.
 * [gunicorn](https://gunicorn.org/) - Gunicorn 'Green Unicorn' és un servidor HTTP Python WSGI per a UNIX
 * [WhiteNoise](http://whitenoise.evans.io/en/stable/) - WhiteNoise permet que la una aplicació web serveixi els seus propis arxius estàtics.
 
-Url desplagament: https://portalsapalomera.herokuapp.com/
+Url desplagament: https://portalsapalomera.herokuapp.com/ \
+Administració Aplicacio : https://portalsapalomera.herokuapp.com/admin/ \
+Usuari Administrador : usuari `admin` contrasenya `12345`
 
 ## Wiki 📖
 
