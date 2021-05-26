@@ -48,7 +48,7 @@ class AdapterCustom(DefaultAccountAdapter):
 @receiver(user_signed_up)
 def retrieve_social_data(request, user, **kwargs):
     email= user.email.lower().split("@")
-    if email[0].find("."):
+    if email[0].find(".") != -1:
         usuariRol = Rol(user=user,id_rol=2)
         usuariRol.save()
     else:
