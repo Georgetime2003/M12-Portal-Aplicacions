@@ -5,7 +5,7 @@
     <div class="row align-items-center shadow rounded mt-2">
         <h3 class="text-center p-3">Temes Sol·licitats</h3>
         <div class="col-10 ms-5">
-            <table class="table table-striped">
+            <table class="table table-striped mb-0">
                 <thead>
                     <tr>
                         <th scope="col">Opcio</th>
@@ -21,15 +21,13 @@
                     {% endfor %} 
                 </tbody>
             </table>
+            <p class="fw-lighter m-0">* un cop assignat el projecte sortira el resultat</p>
             <div class="d-flex flex-nowrap mt-5 pb-3 mb-4 align-items-center p-2 mb-5">
-                <h4>Tema assignat : </h4>
-                <h5 class="ms-4 pt-1">
                 {% for solicitud  in llista_solicituds %}
                     {% if solicitud.assignat == True %}
-                        {{solicitud.seminari}} 
+                        <h4 class="font-monospace">Tema assignat: </h4> <h5 class="ms-2 pt-1 font-monospace">{{solicitud.seminari}} </h5>
                     {% endif %}
                 {% endfor %}
-                </h5>
             </div>
         </div>
     </div>
